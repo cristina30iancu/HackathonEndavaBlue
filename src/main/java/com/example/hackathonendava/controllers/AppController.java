@@ -67,7 +67,6 @@ public class AppController {
     public String listUsers(Model model) {
         List<User> listUsers = userRepo.findAll();
         model.addAttribute("listUsers", listUsers);
-
         return "users_list";
     }
 
@@ -82,7 +81,7 @@ public class AppController {
 
     @PostMapping("/process_new_task")
     public String processNewTask(Task task) {
-
+        task.setStage("To do");
         taskRepo.save(task);
         return "new_task_succes";
     }
