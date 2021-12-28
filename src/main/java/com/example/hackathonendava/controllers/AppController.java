@@ -23,7 +23,22 @@ public class AppController {
 
     @GetMapping("")
     public String viewHomePage() {
-        return "index";
+        return "home_page";
+    }
+
+    @GetMapping("/home")
+    public String viewHome() {
+        return "home_page";
+    }
+
+    @GetMapping("/notes")
+    public String viewNotes() {
+        return "notes";
+    }
+
+    @GetMapping("/deadlines")
+    public String viewDeadlines() {
+        return "tasks";
     }
 
     @GetMapping("/register")
@@ -32,7 +47,11 @@ public class AppController {
 
         return "register_form";
     }
-
+    @GetMapping("/login_page")
+    public String showLoginForm(Model model) {
+        model.addAttribute("user", new User());
+        return "login_page";
+    }
     @PostMapping("/process_register")
     public String processRegister(User user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -67,6 +86,7 @@ public class AppController {
         taskRepo.save(task);
         return "new_task_succes";
     }
+
 
     @GetMapping("/tasks")
     public String listTasks(Model model) {
