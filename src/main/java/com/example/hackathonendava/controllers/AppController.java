@@ -1,6 +1,5 @@
 package com.example.hackathonendava.controllers;
 
-import com.example.hackathonendava.model.Task;
 import com.example.hackathonendava.registration.users.User;
 import com.example.hackathonendava.registration.users.UserRepository;
 import com.example.hackathonendava.repository.TaskRepository;
@@ -11,6 +10,7 @@ import org.springframework.ui.Model;
 //import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import java.util.List;
 
 @Controller
@@ -72,25 +72,31 @@ public class AppController {
 
 
 
-    @GetMapping("/new_task")
-    public String showNewTaskForm(Model model) {
-        model.addAttribute("task", new Task());
+//    @GetMapping("/tasks")
+//    public String listTasks(Model model) {
+//        List<Task> listTasks = taskRepo.findAll();
+//        model.addAttribute("listTasks", listTasks);
+//        return "tasks_list";
+//    }
 
-        return "new_task_form";
-    }
+//    @GetMapping("/new_task")
+//    public String showNewTaskForm(Model model) {
+//        model.addAttribute("task", new Task());
+//
+//        return "new_task_form";
+//    }
 
-    @PostMapping("/process_new_task")
-    public String processNewTask(Task task) {
-        task.setStage("To do");
-        taskRepo.save(task);
-        return "new_task_succes";
-    }
+//    @PostMapping("/process_new_task")
+//
+//    public String processNewTask(Task task) {
+//        task.setStage("To do");
+//        taskRepo.save(task);
+//        return "new_task_succes";
+//
+//    }
+//
+//
 
 
-    @GetMapping("/tasks")
-    public String listTasks(Model model) {
-        List<Task> listTasks = taskRepo.findAll();
-        model.addAttribute("listTasks", listTasks);
-        return "tasks_list";
-    }
+
 }

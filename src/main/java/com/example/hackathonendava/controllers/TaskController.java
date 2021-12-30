@@ -1,21 +1,23 @@
 package com.example.hackathonendava.controllers;
 
 
+
 import com.example.hackathonendava.model.Task;
+
+import com.example.hackathonendava.repository.TaskRepository;
 import com.example.hackathonendava.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
-//@Controller
+@Controller
 //@ResponseBody
-@RestController
-@RequestMapping(value = "/task")
+//@RestController
+//@RequestMapping(value = "/task")
 public class TaskController {
 
-    //    @Value("${test.value}")
-//    private String value;
+
     private final TaskService taskService;
 
     @Autowired
@@ -23,70 +25,40 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping("/demo")
-    public Task getDemoTask(){
-        return taskService.getDemoTask();
+
+
+
+    @GetMapping({"/tasks"})
+    public ModelAndView showAllTasks() {
+        ModelAndView mav = new ModelAndView("list-tasks");
+        mav.addObject("tasks", taskService.getAllTasks());
+        return mav;
     }
 
-
-
-
-    @GetMapping(value = "")
-    public List<Task> getAllTasks() {
-        return taskService.getAllTasks();
+    @GetMapping("/addTaskForm")
+    public ModelAndView addTaskForm() {
+        ModelAndView mav = new ModelAndView("add-task-form");
+        Task newTask = new Task();
+        mav.addObject("task", newTask);
+        return mav;
     }
-
-    @PostMapping("")
-    public Task saveTask( @RequestBody Task task) {
-
-        task = taskService.saveTask(task);
-        return task;
+    @PostMapping("/saveTask")
+    public String saveTask(@ModelAttribute Task task) {
+        taskService.saveTask(task);
+        return "redirect:/tasks";
     }
-
-//    @GetMapping(value="/{id}")
-//    public Task getTask(@PathVariable Long id){
-//
-//        return taskService.getTask(id);
-//    }
-
-    @GetMapping(value = "/param")
-    public Task getParamTask(@RequestParam("id") Long id) {
-        return taskService.getTask(id);
+    @GetMapping("/showUpdateForm")
+    public ModelAndView showUpdateForm(@RequestParam Long taskId) {
+        ModelAndView mav = new ModelAndView("add-task-form");
+        Task task = taskService.getTask(taskId);
+        mav.addObject("task", task);
+        return mav;
     }
-
-//        @GetMapping(value = "/{id}")
-//    public ResponseEntity<Task> getTask(@PathVariable("id") Long id) {
-//        try {
-//            Task task = taskService.getTask(id);
-//            return ResponseEntity.ok(task);
-//        } catch (RuntimeException e)    {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
-
-    @GetMapping(value = "/{id}")
-    public Task getTask(@PathVariable("id") Long id) {
-        Task task = taskService.getTask(id);
-
-        return task;
+    @GetMapping("/deleteTask")
+    public String deleteTask(@RequestParam Long taskId) {
+        taskService.deleteTask(taskId);
+        return "redirect:/tasks";
     }
-
-    @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable Long id){
-        taskService.deleteTask(id);
-    }
-
-    @PutMapping("/{id}")
-    public Task upateTask(@PathVariable Long id,@RequestBody Task request){
-        Task task = taskService.updateTask(id,request);
-        return task;
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/hello")
-    public String hello(){
-        return "Greetings from my first Spring boot app :)";
-    }
-
 
 
 
