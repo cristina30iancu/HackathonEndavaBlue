@@ -65,93 +65,25 @@
             </div>
 
             <div class="task-list col-xs-12">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <div class="left">
-                            <h2 class="task-deadline">5 Feb</h2>
-                            <div class="mark-done">
-                                <h3>Mark as done</h3>
-                                <input class="form-check-input" type="checkbox" value="">
+
+                <ul  class="list-group list-group-flush">
+                    <th:block th:each="task : ${tasks}">
+                        <li  class="list-group-item">
+                            <div class="left">
+                                <h2 class="task-deadline" />
+                                <div class="mark-done">
+                                    <h3 >Mark as done </h3>
+                                    <input class="form-check-input" type="checkbox" value="">
+                                </div>
                             </div>
-                        </div>
-                        <div class="center"><h2>Algebra Exam - <span class="task-duration">1</span> day(s)</h2></div>
-                        <div class="right">
-                            <img src="/media/edit-task.svg" class="btn-edit">
-                            <img src="/media/del-task.svg" class="btn-delete">
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="left">
-                            <h2 class="task-deadline">5 Feb</h2>
-                            <div class="mark-done">
-                                <h3>Mark as done</h3>
-                                <input class="form-check-input" type="checkbox" value="">
+                            <div th:text = "${task.name} + ' - ' + ${task.deadline}" class="center"> </div>
+                            <div class="right">
+                                    <a th:href="@{/showUpdateForm(taskId=${task.id})}"> <img src="/media/edit-task.svg" class="btn-edit"></a>
+                                    <a th:href="@{/deleteTask(taskId=${task.id})}"> <img src="/media/del-task.svg" class="btn-delete"></a>
                             </div>
-                        </div>
-                        <div class="center"><h2>Algebra Homework - <span class="task-duration">2</span> day(s)</h2></div>
-                        <div class="right">
-                            <img src="/media/edit-task.svg" class="btn-edit">
-                            <img src="/media/del-task.svg" class="btn-delete">
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="left">
-                            <h2 class="task-deadline">5 Feb</h2>
-                            <div class="mark-done">
-                                <h3>Mark as done</h3>
-                                <input class="form-check-input" type="checkbox" value="">
-                            </div>
-                        </div>
-                        <div class="center"><h2>Algebra Test - <span class="task-duration">1</span> day(s)</h2></div>
-                        <div class="right">
-                            <img src="/media/edit-task.svg" class="btn-edit">
-                            <img src="/media/del-task.svg" class="btn-delete">
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="left">
-                            <h2 class="task-deadline">5 Feb</h2>
-                            <div class="mark-done">
-                                <h3>Mark as done</h3>
-                                <input class="form-check-input" type="checkbox" value="">
-                            </div>
-                        </div>
-                        <div class="center"><h2>Algebra Mock Test - <span class="task-duration">1</span> day(s)</h2></div>
-                        <div class="right">
-                            <img src="/media/edit-task.svg" class="btn-edit">
-                            <img src="/media/del-task.svg" class="btn-delete">
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="left">
-                            <h2 class="task-deadline">5 Feb</h2>
-                            <div class="mark-done">
-                                <h3>Mark as done</h3>
-                                <input class="form-check-input" type="checkbox" value="">
-                            </div>
-                        </div>
-                        <div class="center"><h2>Algebra Mock Test - <span class="task-duration">1</span> day(s)</h2></div>
-                        <div class="right">
-                            <img src="/media/edit-task.svg" class="btn-edit">
-                            <img src="/media/del-task.svg" class="btn-delete">
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="left">
-                            <h2 class="task-deadline">5 Feb</h2>
-                            <div class="mark-done">
-                                <h3>Mark as done</h3>
-                                <input class="form-check-input" type="checkbox" value="">
-                            </div>
-                        </div>
-                        <div class="center"><h2>Algebra Mock Test - <span class="task-duration">1</span> day(s)</h2></div>
-                        <div class="right">
-                            <img src="/media/edit-task.svg" class="btn-edit">
-                            <img src="/media/del-task.svg" class="btn-delete">
-                        </div>
-                    </li>
-                    
-                </ul>  
+                        </li>
+                    </th:block>
+                </ul>
             </div>
         </div>
 
@@ -163,7 +95,7 @@
                     <h1>You can always add a new task by clicking the following 
                         button</h1>
                         <div class="btn-new" id="btn-new">
-                            <a href="/new_task">New</a></div>
+                            <a href="/addTaskForm">New</a></div>
                 </div>
                 
             </div>

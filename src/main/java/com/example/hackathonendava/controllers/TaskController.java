@@ -30,7 +30,7 @@ public class TaskController {
 
     @GetMapping({"/tasks"})
     public ModelAndView showAllTasks() {
-        ModelAndView mav = new ModelAndView("list-tasks");
+        ModelAndView mav = new ModelAndView("tasks");
         mav.addObject("tasks", taskService.getAllTasks());
         return mav;
     }

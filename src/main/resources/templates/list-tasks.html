@@ -7,16 +7,17 @@
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
           crossorigin="anonymous" />
+    <link rel="stylesheet" href="/style/tasks.css">
 </head>
 
 <body>
 
-<div class="container">
+<div class="main-container row">
 
-    <h3>List Tasks</h3>
+    <h3 class="title">List Tasks</h3>
 
     <hr/>
-    <a th:href="@{/addTaskForm}" class="btn btn-primary">Add Task</a>
+    <a th:href="@{/addTaskForm}" class="btn-new" id="btn-new">Add Task</a>
     <br/><br/>
     <table class="table table-bordered table-striped">
 
