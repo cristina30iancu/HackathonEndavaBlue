@@ -54,6 +54,18 @@ body {
   color: #4e4d4d !important;
 }
 
+.navbar .nav-right #switchAutism{
+  cursor: pointer;
+  height: 1.4em;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(73deg) brightness(150%) contrast(100%);
+  margin-top: 0px;
+}
+.navbar .nav-right .form-check-label{
+  margin-right: 2em;
+  color: black;
+  margin-top: 0px;
+}
+
 #hamburger{
   filter: invert(100%) sepia(200%) saturate(7500%) hue-rotate(73deg) brightness(106%) contrast(109%) !important;
 }
@@ -63,15 +75,9 @@ body {
 }
 
 #logo{
-  filter: invert(56%) sepia(27%) saturate(641%) hue-rotate(119deg) brightness(89%) contrast(88%);
+  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(73deg) brightness(106%) contrast(109%) !important;
 }
 
-#favourites{
-  filter: invert(100%) !important;
-}
-#search{
-  filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(21deg) brightness(97%) contrast(103%) !important;
-}
 
 
 .navbar .btn {

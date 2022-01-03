@@ -64,6 +64,7 @@ body {
 
 .navbar .nav-right {
   text-align: right;
+  display: flex;
 }
 
 .navbar .nav-right #favourites {
@@ -78,6 +79,16 @@ body {
   padding-right: 1em;
   -webkit-filter: invert(100%) sepia(0%) saturate(616%) hue-rotate(62deg) brightness(93%) contrast(91%);
   filter: invert(100%) sepia(0%) saturate(616%) hue-rotate(62deg) brightness(93%) contrast(91%);
+}
+.navbar .nav-right #switchAutism{
+  cursor: pointer;
+  height: 1.4em;
+  margin-top: 0px;
+}
+.navbar .nav-right .form-check-label{
+  margin-right: 2em;
+  color: white;
+  margin-top: 0px;
 }
 
 .navbar .nav-right #hamburger {
@@ -431,7 +442,7 @@ body {
   margin: 2em 3em 0 3em;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1124px) {
   .nav-item {
     display: none;
   }
