@@ -1,28 +1,34 @@
 package com.example.hackathonendava.controllers;
 
-import com.example.hackathonendava.registration.users.User;
-import com.example.hackathonendava.registration.users.UserRepository;
+import com.example.hackathonendava.registration.User;
+import com.example.hackathonendava.registration.UserRepository;
 import com.example.hackathonendava.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 //import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
 public class AppController {
 
+    private String currentUser = "none";
+
     @Autowired
     private UserRepository userRepo;
     @Autowired
     private TaskRepository taskRepo;
 
+    private Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     @GetMapping("")
-    public String viewHomePage() {
+    public String viewHomePage(User user) {
         return "home_page";
     }
 
@@ -33,8 +39,11 @@ public class AppController {
 
     @GetMapping("/notes")
     public String viewNotes() {
+
         return "notes";
     }
+
+
 
     @GetMapping("/deadlines")
     public String viewDeadlines() {
@@ -57,17 +66,19 @@ public class AppController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-
+        System.out.println(user.getEmail());
+        user.setEnabled(true);
         userRepo.save(user);
 
         return "register_succes";
     }
 
-    @GetMapping("/users")
-    public String listUsers(Model model) {
-        List<User> listUsers = userRepo.findAll();
-        model.addAttribute("listUsers", listUsers);
-        return "users_list";
+    @GetMapping({"/management"})
+    public ModelAndView listUsers() {
+        ModelAndView mav = new ModelAndView("management");
+        mav.addObject("listUsers", (List<User>) userRepo.findAll());
+        return mav;
+
     }
 
 

@@ -1,8 +1,9 @@
-package com.example.hackathonendava.registration.users;
+package com.example.hackathonendava.registration;
 
-import java.util.Collection;
+import java.util.*;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserInfo implements UserDetails {
@@ -15,7 +16,14 @@ public class UserInfo implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Set<Role> roles = user.getRoles();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        for (Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+
+        return authorities;
     }
 
     @Override
@@ -45,10 +53,7 @@ public class UserInfo implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return user.isEnabled();
     }
 
-    public String getFullName() {
-        return user.getFirstName() + " " + user.getLastName();
-    }
 }
