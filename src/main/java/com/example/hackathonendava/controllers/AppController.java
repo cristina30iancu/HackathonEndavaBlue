@@ -42,6 +42,11 @@ public class AppController {
 
         return "notes";
     }
+    @GetMapping("/professors")
+    public String viewProfessors() {
+
+        return "professors";
+    }
 
 
 

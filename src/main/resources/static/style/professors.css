@@ -1,0 +1,162 @@
+:root {
+    --main-color:#4E6686;
+    --secondary-color: #FCE3AF;
+    --shadow-var: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    --my-red-color: #E36D6D;
+    --green-message: #BBE5B0;
+}
+
+* {
+    margin-right: 0px;
+}
+
+* a {
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    height: 50em !important;
+    overflow-x: hidden;
+}
+
+.navbar .nav-left a {
+    color: black !important;
+}
+
+.navbar .nav-center #logo {
+    -webkit-filter: invert(100%) sepia(0%) saturate(616%) hue-rotate(62deg) brightness(93%) contrast(91%) !important;
+    filter: invert(100%) sepia(0%) saturate(616%) hue-rotate(62deg) brightness(93%) contrast(91%) !important;
+}
+
+.navbar .nav-right #hamburger {
+    -webkit-filter: invert(100%) sepia(0%) saturate(616%) hue-rotate(62deg) brightness(93%) contrast(91%) !important;
+    filter: invert(100%) sepia(0%) saturate(616%) hue-rotate(62deg) brightness(93%) contrast(91%) !important;
+}
+.navbar .nav-right #switchAutism{
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(73deg) brightness(150%) contrast(100%);
+}
+.navbar .nav-right .form-check-label {
+    color: black !important;
+}
+
+.page-container {
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+}
+
+.page-container .page-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.page-container .page-content #circle-info {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    right: 0px;
+    opacity: 0;
+    -webkit-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.page-container .page-content #circle-text {
+    position: absolute;
+    opacity: 0;
+    top: 4em;
+    width: 8em;
+    right: .4em;
+    text-align: right;
+    -webkit-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.page-container .professors-display {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    top: 5em;
+    left: 5em;
+    margin: 0px;
+    padding: 0px;
+    height: 100em;
+    width: 75%;
+    /*background-color: #4E6686;*/
+    z-index: 20;
+    text-align: center;
+}
+
+.page-container .professors-display .title {
+    padding-top: 1em;
+    font-size: 46px;
+    z-index: 10;
+    color: white;
+}
+
+.page-container .professors-display .professor-list {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    /*background-color: #BBE5B0;*/
+    text-align: center;
+}
+
+.page-container .professors-display .professor-list .prof-background {
+    position: absolute;
+    -o-object-fit: cover;
+    object-fit: cover;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.page-container .professors-display .professor-list .professor-cards {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 4em;
+    position: absolute;
+    z-index: 12;
+    top: 0px;
+    left: 0px;
+    top: 10em;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.page-container .professors-display .professor-list .professor-cards .card {
+    margin: 0 1em 2em 1em;
+    width: 16em;
+    height: 22em;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    -webkit-box-shadow: var(--shadow-var);
+    box-shadow: var(--shadow-var);
+}
+
+.page-container .professors-display .professor-list .professor-cards .card:hover {
+    padding-right: 0px;
+    padding-left: 0px;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+@media only screen and (min-width: 1500px) {
+    #circle-text {
+        opacity: 1 !important;
+    }
+    #circle-info {
+        opacity: 1 !important;
+    }
+}
+/*# sourceMappingURL=professors.css.map */
