@@ -39,6 +39,11 @@ public class AppController {
         return "home_page";
     }
 
+    @GetMapping("/courses")
+    public String viewCourses() {
+        return "courses";
+    }
+
     @GetMapping("/notes")
     public ModelAndView viewNotes() {
         ImageOCR imageOCR = new ImageOCR(ImageToText.imageToText());
