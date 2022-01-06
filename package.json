@@ -1,0 +1,10 @@
+{
+  "name": "HackathonEndavaBlue",
+  "version": "1.0.0",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "browserify": "^17.0.0",
+    "express": "^4.17.2",
+    "multer": "^1.4.4"
+  }
+}

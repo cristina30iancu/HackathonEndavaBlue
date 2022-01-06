@@ -6,9 +6,10 @@ document.getElementById('file-upload').onchange = (e)=>{
     var reader = new FileReader();
     reader.readAsDataURL(imageFile);
     reader.onloadend = function (e) {
-      image = new Image();
+      let image = new Image();
       image.src = e.target.result;
-      document.appendChild(image);
+      console.log(imageFile.name)
+
     }
   }
 };
