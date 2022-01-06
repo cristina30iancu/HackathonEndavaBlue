@@ -169,13 +169,14 @@ input[type="file"] {
 #paper{
   margin-left: -5vw;
 }
-#preview{
+
+#preview,#textArea{
   position: absolute;
   width: 30vw;
   height: 70vh;
   right: 1vw;
-  top: 20vh;
-  background: #F0F0F0;
+  top: 18vh;
+  /*background: #F0F0F0;*/
 }
 #preview p{
   position: absolute;

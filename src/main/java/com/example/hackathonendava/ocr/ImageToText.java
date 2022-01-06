@@ -9,6 +9,7 @@ public class ImageToText {
 
     static BytePointer resultText;
     static PIX image;
+    public static String result;
 
     static TessBaseAPI api = new TessBaseAPI();
 
@@ -43,6 +44,7 @@ public class ImageToText {
     public static void calculateText() {
         setResultText(api.GetUTF8Text());
         String string = getResultText().getString();
+        result = string;
         System.out.println(string);
     }
 
@@ -54,15 +56,14 @@ public class ImageToText {
 
     // THIS METHOD SHOULD BE REFERENCED IN DIGITAL NOTES PAGE
 
-    public static void imageToText() {
-
+    public static String imageToText() {
         initializeTesseract();
         // loadImage should receive as argument the correct path
         // this is just an example
         loadImage("testImageToText.png");
         calculateText();
         cleanMemory();
-
+        return result;
     }
 
     public static void main(String[] args) {

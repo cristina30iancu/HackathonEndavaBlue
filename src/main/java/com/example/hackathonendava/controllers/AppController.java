@@ -1,5 +1,7 @@
 package com.example.hackathonendava.controllers;
 
+import com.example.hackathonendava.model.ImageOCR;
+import com.example.hackathonendava.ocr.ImageToText;
 import com.example.hackathonendava.registration.User;
 import com.example.hackathonendava.registration.UserRepository;
 import com.example.hackathonendava.repository.TaskRepository;
@@ -38,10 +40,13 @@ public class AppController {
     }
 
     @GetMapping("/notes")
-    public String viewNotes() {
-
-        return "notes";
+    public ModelAndView viewNotes() {
+        ImageOCR imageOCR = new ImageOCR(ImageToText.imageToText());
+        ModelAndView mav = new ModelAndView("notes");
+        mav.addObject("imageOCR",imageOCR );
+        return mav;
     }
+
     @GetMapping("/professors")
     public String viewProfessors() {
 
