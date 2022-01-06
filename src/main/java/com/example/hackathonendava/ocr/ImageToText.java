@@ -11,6 +11,9 @@ public class ImageToText {
     static PIX image;
     public static String result;
 
+    public ImageToText() {
+    }
+
     static TessBaseAPI api = new TessBaseAPI();
 
     public static BytePointer getResultText() {
@@ -27,6 +30,14 @@ public class ImageToText {
 
     public static void setImage(PIX image) {
         ImageToText.image = image;
+    }
+
+    public static String getResult() {
+        return result;
+    }
+
+    public static void setResult(String result) {
+        ImageToText.result = result;
     }
 
     public static void initializeTesseract() {
@@ -56,17 +67,14 @@ public class ImageToText {
 
     // THIS METHOD SHOULD BE REFERENCED IN DIGITAL NOTES PAGE
 
-    public static String imageToText() {
+    public String imageToText(String path) {
         initializeTesseract();
         // loadImage should receive as argument the correct path
         // this is just an example
-        loadImage("testImageToText.png");
+        loadImage(path);
         calculateText();
         cleanMemory();
         return result;
     }
 
-    public static void main(String[] args) {
-        imageToText();
-    }
 }

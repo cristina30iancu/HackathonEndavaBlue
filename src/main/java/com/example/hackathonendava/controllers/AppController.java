@@ -14,12 +14,20 @@ import org.springframework.ui.Model;
 //import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
+import java.io.*;
 import java.util.List;
 
 @Controller
 public class AppController {
+
+    private String path;
+    String res;
 
     private String currentUser = "none";
 
@@ -45,11 +53,44 @@ public class AppController {
     }
 
     @GetMapping("/notes")
-    public ModelAndView viewNotes() {
-        ImageOCR imageOCR = new ImageOCR(ImageToText.imageToText());
+    public ModelAndView viewNotes(Model model) {
+        ImageToText imageOCR = new ImageToText();
+        imageOCR.setResult("bb");
+        if(path != null) {
+            String res = imageOCR.imageToText(path);
+        }
         ModelAndView mav = new ModelAndView("notes");
-        mav.addObject("imageOCR",imageOCR );
+        mav.addObject("imageOCR", imageOCR);
+        model.addAttribute("resultText",res);
+
         return mav;
+    }
+
+    @RequestMapping( "/image" )
+    public String image () {
+        return "/image" ;
+    }
+
+    @PostMapping ("/upload")
+    public RedirectView StringhandleFileUpload (Model model, @RequestParam( "image" ) MultipartFile file ) {
+        ImageToText imageOCR = new ImageToText();
+        if (!file.isEmpty ()) {
+            try {
+                BufferedOutputStream out = new BufferedOutputStream (new FileOutputStream(new File(file.getOriginalFilename())));
+                out.write(file.getBytes());
+                out.flush();
+                out.close();
+
+                res = imageOCR.imageToText(file.getOriginalFilename());
+
+            } catch (FileNotFoundException e ) {
+                e.printStackTrace ();
+
+            } catch (IOException e ) {
+                e .printStackTrace ();
+            }
+        }
+        return new RedirectView("/notes",true);
     }
 
     @GetMapping("/professors")
