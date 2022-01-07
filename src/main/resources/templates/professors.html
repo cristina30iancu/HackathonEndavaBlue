@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,10 +21,10 @@
   <nav class="navbar navbar-light bg-light justify-content-between sticky-top col-xs-12" id="navbar">
     <div class="nav-left">
       <a id="home-text" class="nav-item" href="/home">Home</a>
-      <a id="profile-text" class="nav-item" href="#">Profile</a>
       <a id="calendar-text" class="nav-item" href="#">Calendar</a>
       <a id="professors-text" class="nav-item" href="/professors">Professors</a>
       <a id="courses-text" class="nav-item" href="/courses">Courses</a>
+      <a id="quizes-text" class="nav-item" href="/quizes">Quizes</a>
       <a id="deadlines-text" class="nav-item" href="/tasks">Deadlines</a>
       <a id="diginotes-text" class="nav-item" href="/notes">Digital Notes</a>
       <a sec:authorize="hasAnyAuthority('ADMIN')" id="management-text" class="nav-item" href="/management">Management</a>
@@ -36,10 +36,16 @@
 
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#" id="btnSignIn">Sign in</a>
-        <a href="#" id="btnSignOut" onclick="signOut()" data-bs-toggle="modal"
-           data-bs-target="#exampleModal2">Sign out</a>
-        <a href="#" id="btnAbout">About us</a>
+        <a sec:authorize="isAnonymous()" href="/login_page" id="btnSignIn">Log in</a>
+        <a sec:authorize="isAnonymous()" href="/register" id="btnSignOut" >Register</a>
+        <a sec:authorize="isAuthenticated()" href="javascript: document.logoutForm.submit()" role="menuitem"> Logout</a>
+
+        <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+          <input hidden type="submit" value="Sign Out"/>
+        </form>
+        <a id="profile-text" href="#">Profile</a>
+        <a href="#" >About us</a>
+        <a href="#" >Preferences</a>
         <a href="#" id="btnContact">Contact</a>
       </div>
       <div class="form-check form-switch">

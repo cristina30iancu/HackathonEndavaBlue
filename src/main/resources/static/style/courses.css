@@ -66,9 +66,10 @@ body {
     position: absolute;
     opacity: 0;
     top: 4em;
+    right: 1em !important;
     width: 8em;
-    /* right: .4em; */
     text-align: right;
+    font-weight: 500 !important;
     -webkit-transition: all .35s ease-in-out;
     transition: all .35s ease-in-out;
 }
@@ -167,6 +168,9 @@ body {
     box-shadow: var(--shadow-var);
     background-color: transparent;
 }
+/*.page-container .professors-display .professor-list .professor-cards  .circleplus{*/
+/*    cursor: pointer;*/
+/*}*/
 
 .page-container .professors-display .professor-list .professor-cards .card:hover {
     padding-right: 0px;

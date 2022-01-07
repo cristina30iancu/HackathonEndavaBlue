@@ -99,7 +99,16 @@ public class AppController {
         return "professors";
     }
 
+    @GetMapping("/quizes")
+    public String viewQuizes() {
 
+        return "quizes";
+    }
+    @GetMapping("/quiz_solve")
+    public String viewQuizSolve() {
+
+        return "quiz_solve";
+    }
 
     @GetMapping("/deadlines")
     public String viewDeadlines() {
@@ -163,7 +172,4 @@ public class AppController {
 //    }
 //
 //
-
-
-
 }
