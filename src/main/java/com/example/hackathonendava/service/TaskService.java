@@ -4,10 +4,14 @@ package com.example.hackathonendava.service;
 
 import com.example.hackathonendava.exception.NotFoundException;
 import com.example.hackathonendava.model.Task;
+import com.example.hackathonendava.registration.User;
+import com.example.hackathonendava.registration.UserInfo;
 import com.example.hackathonendava.repository.TaskRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -25,7 +29,23 @@ public class TaskService {
     }
 
     public List<Task> getAllTasks(){
+
+
         return taskRepository.findAll();
+    }
+
+    public List<Task> getAllTasksByUserName(){
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = "";
+        if (principal instanceof UserInfo) {
+            username = ((UserInfo)principal).getUsername();
+
+        } else {
+            username = principal.toString();
+
+        }
+        return taskRepository.getAllTasksByUserName(username);
     }
 
     public Task getTask(Long id) {
@@ -42,6 +62,19 @@ public class TaskService {
 
     public Task saveTask(Task task) {
         task.setStage("To do");
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = "";
+        if (principal instanceof UserInfo) {
+            username = ((UserInfo)principal).getUsername();
+
+        } else {
+            username = principal.toString();
+
+        }
+
+        System.out.println(username);
+        task.setUser_name(username);
         return taskRepository.save(task);
     }
     public void deleteTask(Long id){

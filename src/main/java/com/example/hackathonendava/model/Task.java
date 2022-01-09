@@ -26,6 +26,9 @@ public class Task {
     @Column(name = "stage")
     private String stage; // stadiul in care se afla task-ul: To do, doing, done
 
+    @Column(name = "user_name")
+    private String user_name;
+
     public Long getId() {
         return id;
     }
@@ -64,5 +67,13 @@ public class Task {
 
     public void setStage(String stage) {
         this.stage = stage;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 }

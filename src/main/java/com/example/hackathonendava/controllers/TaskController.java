@@ -25,7 +25,7 @@ public class TaskController {
     @GetMapping({"/tasks"})
     public ModelAndView showAllTasks() {
         ModelAndView mav = new ModelAndView("tasks");
-        mav.addObject("tasks", taskService.getAllTasks());
+        mav.addObject("tasks", taskService.getAllTasksByUserName());
         return mav;
     }
 
@@ -33,6 +33,7 @@ public class TaskController {
     public ModelAndView addTaskForm() {
         ModelAndView mav = new ModelAndView("add-task-form");
         Task newTask = new Task();
+
         mav.addObject("task", newTask);
         return mav;
     }
