@@ -47,6 +47,8 @@ label{
 	cursor: pointer;
 	transition: .5s ease-in-out;
 }
+
+
 input{
 	justify-content: center;
 	display: flex;
@@ -258,6 +260,8 @@ figure .person-body {
 	top: 126%;
 	background: hsl(var(--fgColorH), var(--fgColorS), var(--fgColorL));
 }
+
+
 
 figure .shirt-1,
 figure .shirt-2 {

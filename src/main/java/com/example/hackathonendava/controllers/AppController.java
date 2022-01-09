@@ -133,9 +133,14 @@ public class AppController {
         user.setPassword(encodedPassword);
         System.out.println(user.getEmail());
         user.setEnabled(true);
-        userRepo.save(user);
+        try {
+            userRepo.save(user);
+        }
+        catch (Exception e) {
+            return "register_error";
+        }
 
-        return "register_succes";
+        return "login_page";
     }
 
     @GetMapping({"/management"})

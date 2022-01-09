@@ -22,7 +22,9 @@
 			<div class="shirt-2"></div>
 		</figure>
 		<div class="m-3">
-
+			<center><div th:if="${param.error}" class="alert alert-error">
+				Invalid username and password.
+			</div></center>
 			<div class="form-group row">
 				<label class="col-4 col-form-label">E-mail: </label>
 				<div class="col-8">
@@ -57,8 +59,16 @@
 			<div>
 				<button type="submit" class="btn btn-primary">Sign Up</button>
 			</div>
+
 		</div>
 
+	</form>
+
+	<form th:action="@{/login_page}"></br>
+	<div><center>You already have an account?</center></div>
+	<div>
+		<button type="submit" class="btn btn-primary">Log in</button>
+	</div>
 	</form>
 
 </div>
