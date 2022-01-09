@@ -1,12 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:900,300);
 body {
-    background-color: #8c8c8c;
+    background-color: #ffdab3;
     font-family: roboto;
 }
 .container {
     width: 1500px;
     height: 500px;
-    margin: 150px auto 0px;
+    margin: 200px auto 0px;
     background-color: #fff;
     padding: 0 0px 0px;
     border-radius: 6px;
@@ -16,6 +16,23 @@ body {
     -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.075);
     -moz-box-shadow: 0 2px 5px rgba(0,0,0,0.075);
     text-align: center;
+}
+
+.profile {
+    border-radius: 100px;
+    overflow: hidden;
+    height: 150px;
+    width: 150px;
+    position: relative;
+    margin: auto;
+    top: -60px;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 0 13px #f0f0f0;
+    -webkit-box-shadow: 0 0 0 13px #f0f0f0;
+    -moz-box-shadow: 0 0 0 13px #f0f0f0;
+
 }
 
 .avatar-flip {

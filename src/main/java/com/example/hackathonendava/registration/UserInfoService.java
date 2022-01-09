@@ -1,6 +1,7 @@
 package com.example.hackathonendava.registration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,8 @@ public class UserInfoService implements UserDetailsService {
     public void updateUserProfilePicture(String image, String email) {
         User user = userRepository.getUserByEmail(email);
         user.setProfile_image(image);
+        System.out.println(user.getProfile_image());
+
         userRepository.save(user);
     }
 

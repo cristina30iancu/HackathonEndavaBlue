@@ -1,5 +1,6 @@
 package com.example.hackathonendava.controllers;
 
+import com.example.hackathonendava.HackathonEndavaApplication;
 import com.example.hackathonendava.model.ImageOCR;
 import com.example.hackathonendava.ocr.ImageToText;
 import com.example.hackathonendava.registration.User;
@@ -27,10 +28,12 @@ import java.io.*;
 import java.util.List;
 
 @Controller
+
 public class AppController {
 
     private String path;
     String res;
+
 
     private String currentUser = "none";
 
@@ -56,7 +59,6 @@ public class AppController {
     }
 
 
-
     @GetMapping("/notes")
     public ModelAndView viewNotes(Model model) {
         ImageToText imageOCR = new ImageToText();
@@ -70,6 +72,7 @@ public class AppController {
 
         return mav;
     }
+
 
     @GetMapping("/profile")
     public String viewProfile() { return "/profile"; }
@@ -102,7 +105,7 @@ public class AppController {
     }
 
     @PostMapping ("/uploadProfilePicture")
-    public RedirectView StringhandleUploadProfilePicture (Model model, @RequestParam( "image" ) MultipartFile file ) {
+    public ModelAndView StringhandleUploadProfilePicture (Model model, @RequestParam( "image" ) MultipartFile file ) {
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = "";
@@ -120,6 +123,7 @@ public class AppController {
                 out.write(file.getBytes());
                 out.flush();
                 out.close();
+                model.addAttribute("img","/media/" + file.getOriginalFilename());
                 System.out.println(file.getBytes());
                 userService.updateUserProfilePicture("/media/" + file.getOriginalFilename(),username);
 
@@ -130,7 +134,8 @@ public class AppController {
                 e .printStackTrace ();
             }
         }
-        return new RedirectView("/profile",true);
+        ModelAndView mav = new ModelAndView("profile");
+        return mav;
     }
 
     @GetMapping("/professors")
