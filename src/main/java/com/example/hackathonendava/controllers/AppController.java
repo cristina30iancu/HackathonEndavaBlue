@@ -4,6 +4,7 @@ import com.example.hackathonendava.model.ImageOCR;
 import com.example.hackathonendava.ocr.ImageToText;
 import com.example.hackathonendava.registration.User;
 import com.example.hackathonendava.registration.UserRepository;
+import com.example.hackathonendava.repository.CourseRepository;
 import com.example.hackathonendava.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -35,6 +36,8 @@ public class AppController {
     private UserRepository userRepo;
     @Autowired
     private TaskRepository taskRepo;
+    @Autowired
+    private CourseRepository courseRepo;
 
     private Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     @GetMapping("")
@@ -47,10 +50,7 @@ public class AppController {
         return "home_page";
     }
 
-    @GetMapping("/courses")
-    public String viewCourses() {
-        return "courses";
-    }
+
 
     @GetMapping("/notes")
     public ModelAndView viewNotes(Model model) {
@@ -146,30 +146,4 @@ public class AppController {
 
     }
 
-
-
-//    @GetMapping("/tasks")
-//    public String listTasks(Model model) {
-//        List<Task> listTasks = taskRepo.findAll();
-//        model.addAttribute("listTasks", listTasks);
-//        return "tasks_list";
-//    }
-
-//    @GetMapping("/new_task")
-//    public String showNewTaskForm(Model model) {
-//        model.addAttribute("task", new Task());
-//
-//        return "new_task_form";
-//    }
-
-//    @PostMapping("/process_new_task")
-//
-//    public String processNewTask(Task task) {
-//        task.setStage("To do");
-//        taskRepo.save(task);
-//        return "new_task_succes";
-//
-//    }
-//
-//
 }

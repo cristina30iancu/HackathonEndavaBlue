@@ -1,0 +1,38 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Task form</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="style\register_style.css" type="text/css" >
+</head>
+<body>
+
+<div class="container">
+
+    <hr/>
+
+    <form th:action="@{/saveCourse}" th:object="${course}" method="POST">
+
+        <div class="m-3">
+
+            <div class="form-group row">
+                <div class="col-12">
+                    <input type="text" th:field="*{name}" class="form-control" placeholder="Enter Name" />
+                </div>
+            </div>
+
+            <div class="col-12"><button type="submit" class="butonel">Save</button> </div>
+        </div>
+        <hr/>
+        <div class="col-12"><a th:href="@{/courses}" class="butonel">Back to courses list</a> </div>
+
+    </form>
+
+</div>
+<center><h3>This course is already in the Courses List</h3> </center>
+</body>
+</html>

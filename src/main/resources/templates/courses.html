@@ -61,33 +61,16 @@
             <div class="title"><b>Courses</b></div>
             <div class="professor-list row">
                 <img src="/media/pexels.png" class="prof-background">
-                <div class="professor-cards row">
+                <div class="professor-cards row" >
 
-                    <div class="card col-xs-12 col-sm-4 col-lg-4" >
+                    <div class="card col-xs-12 col-sm-4 col-lg-4" th:each = "course : ${courses}" >
                         <img class="card-img-top" src="/media/book.jfif" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Algebra</h5>
+                            <h5 class="card-title" th:text = "${course.name}"></h5>
                         </div>
+
                     </div>
-                    <div class="card col-xs-12 col-sm-4 col-lg-4" >
-                        <img class="card-img-top" src="/media/book.jfif" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">English</h5>
-                        </div>
-                    </div>
-                    <div class="card " >
-                        <img class="card-img-top" src="/media/book.jfif" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Economics</h5>
-                        </div>
-                    </div>
-                    <div class="card " >
-                        <img class="card-img-top" src="/media/book.jfif" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Informatics</h5>
-                        </div>
-                    </div>
-                    <a href="#">
+                    <a href="/addCourseForm">
                         <div width='100%' class='circleplus'>
                             <svg width="123" height="122" viewBox="0 0 63 122" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <ellipse cx="31.5" cy="31" rx="31.5" ry="31" fill="white">  </ellipse>
