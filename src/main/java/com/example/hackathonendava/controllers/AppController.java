@@ -3,6 +3,8 @@ package com.example.hackathonendava.controllers;
 import com.example.hackathonendava.model.ImageOCR;
 import com.example.hackathonendava.ocr.ImageToText;
 import com.example.hackathonendava.registration.User;
+import com.example.hackathonendava.registration.UserInfo;
+import com.example.hackathonendava.registration.UserInfoService;
 import com.example.hackathonendava.registration.UserRepository;
 import com.example.hackathonendava.repository.CourseRepository;
 import com.example.hackathonendava.repository.TaskRepository;
@@ -31,6 +33,9 @@ public class AppController {
     String res;
 
     private String currentUser = "none";
+
+    @Autowired
+    private UserInfoService userService;
 
     @Autowired
     private UserRepository userRepo;
@@ -66,6 +71,9 @@ public class AppController {
         return mav;
     }
 
+    @GetMapping("/profile")
+    public String viewProfile() { return "/profile"; }
+
     @RequestMapping( "/image" )
     public String image () {
         return "/image" ;
@@ -93,6 +101,38 @@ public class AppController {
         return new RedirectView("/notes",true);
     }
 
+    @PostMapping ("/uploadProfilePicture")
+    public RedirectView StringhandleUploadProfilePicture (Model model, @RequestParam( "image" ) MultipartFile file ) {
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = "";
+        if (principal instanceof UserInfo) {
+            username = ((UserInfo)principal).getUsername();
+
+        } else {
+            username = principal.toString();
+
+        }
+
+        if (!file.isEmpty ()) {
+            try {
+                BufferedOutputStream out = new BufferedOutputStream (new FileOutputStream(new File("src/main/resources/static/media/" + file.getOriginalFilename())));
+                out.write(file.getBytes());
+                out.flush();
+                out.close();
+                System.out.println(file.getBytes());
+                userService.updateUserProfilePicture("/media/" + file.getOriginalFilename(),username);
+
+            } catch (FileNotFoundException e ) {
+                e.printStackTrace ();
+
+            } catch (IOException e ) {
+                e .printStackTrace ();
+            }
+        }
+        return new RedirectView("/profile",true);
+    }
+
     @GetMapping("/professors")
     public String viewProfessors() {
 
@@ -115,6 +155,8 @@ public class AppController {
         return "tasks";
     }
 
+
+
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
@@ -131,7 +173,6 @@ public class AppController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        System.out.println(user.getEmail());
         user.setEnabled(true);
         try {
             userRepo.save(user);

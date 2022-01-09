@@ -155,12 +155,12 @@ input[type="file"] {
 }
 .custom-file-upload {
   display: inline-block;
-  padding: 0.5vh 1vw;
-  width: 40vw;
+  padding: 0.6vh 0.5vw;
+  width: 14vw;
   cursor: pointer;
-  height: 7vh;
+  height: 6vh;
   margin-left: 3vw;
-  border: 3px dashed #FFFFFF;
+  border: 3px dashed #000000;
   border-radius: 30px;
 }
 #arrow{

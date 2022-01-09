@@ -36,6 +36,12 @@ public class UserInfo implements UserDetails {
         return user.getEmail();
     }
 
+    public String getFirstName() { return user.getFirstName(); }
+
+    public String getLastName() { return user.getLastName(); }
+
+    public String getProfileImage() { return user.getProfile_image(); }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -55,5 +61,7 @@ public class UserInfo implements UserDetails {
     public boolean isEnabled() {
         return user.isEnabled();
     }
+
+    public User getUser() { return this.user; }
 
 }

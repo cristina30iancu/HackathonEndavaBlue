@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-//@ResponseBody
-//@RestController
-//@RequestMapping(value = "/task")
 public class TaskController {
     private final TaskService taskService;
 
