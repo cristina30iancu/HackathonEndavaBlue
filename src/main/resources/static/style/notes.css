@@ -16,6 +16,7 @@
 
 body {
   margin: 0;
+  overflow: hidden;
 }
 
 .navbar {
@@ -137,6 +138,18 @@ body {
   color: black;
 
 }
+
+.textbox1 p{
+  margin-top: 2vh;
+  font-family: Roboto;
+  font-style: normal;
+  margin-left: 3vw;
+  font-size: 3vh;
+  line-height: 47px;
+  color: black;
+
+}
+
 #circle-new{
   height: 70em;
   z-index: -1;
@@ -153,15 +166,37 @@ body {
 input[type="file"] {
   display: none;
 }
-.custom-file-upload {
+
+
+.custom-file-upload1 {
   display: inline-block;
   padding: 0.6vh 0.5vw;
-  width: 14vw;
+  width: 5vw;
   cursor: pointer;
-  height: 6vh;
+  height: 5.5vh;
   margin-left: 3vw;
-  border: 3px dashed #000000;
+  border: 1px dashed #ffffff;
   border-radius: 30px;
+  background: #706a5e;
+}
+
+.custom-file-upload2 {
+  display: inline-block;
+  padding: 0.6vh 0.4vw;
+  width: 7vw;
+  cursor: pointer;
+  height: 5vh;
+  margin-left: 3vw;
+  border: 1px dashed #ffffff;
+  border-radius: 30px;
+  background: #706a5e;
+}
+
+
+.button-predict {
+  border: #706a5e;
+  background: #706a5e;
+  color: #ffffff;
 }
 #arrow{
   transform: translate(15px, 20px);
@@ -170,13 +205,22 @@ input[type="file"] {
   margin-left: -5vw;
 }
 
-#preview,#textArea{
+#preview{
   position: absolute;
   width: 30vw;
-  height: 70vh;
-  right: 1vw;
-  top: 18vh;
+  height: 30vh;
+  right: 2vw;
+  top: 30vh;
   /*background: #F0F0F0;*/
+}
+
+#textArea {
+  border: 3px dashed #000000;
+  position: absolute;
+  width: 40vw;
+  height: 60vh;
+  right: 1vw;
+  top: 5vh;
 }
 #preview p{
   position: absolute;

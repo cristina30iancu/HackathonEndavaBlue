@@ -62,11 +62,8 @@
 
 <div class="container">
 
-
       <img  class = "profile" th:if = "${img != null}" th:attr="src=${img},title=${img}" height="150" width="150">
-
       <img class = "profile" th:if = "${img == null}" th:attr="src=${#authentication.getPrincipal().getProfileImage()},title=${#authentication.getPrincipal().getProfileImage()}" height="150" width="150">
-
 
 
   <form th:action="@{/uploadProfilePicture}" method = "post" enctype="multipart/form-data">
