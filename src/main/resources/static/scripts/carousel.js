@@ -9,9 +9,23 @@ $ (document).ready(function() {
   var circle_container = document.getElementById("hoverpopup");
   var hover_alert = document.getElementById("hover-alert");
   var btn_sort = document.getElementById("sort-btn");
+
   hover_alert.style.opacity = "1";
- 
-  
+
+  // audio assistance
+  let utterance = new SpeechSynthesisUtterance("Welcome to Stud Source!");
+  speechSynthesis.speak(utterance);
+
+  $('a').mouseenter(function() {
+    speechSynthesis.cancel();
+    speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+  })
+  $('button').mouseenter(function() {
+    speechSynthesis.cancel();
+    speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+  })
+  // audio assistance
+
   new ResizeObserver(() => { 
     console.log(popup_circle.offsetHeight);
     if(popup_circle.offsetHeight < 300)

@@ -9,6 +9,20 @@ $(document).ready(function(){
     var hamburger = document.getElementById("hamburger");
     var logo = document.getElementById("logo");
 
+    // audio assistance
+    let utterance = new SpeechSynthesisUtterance("Welcome to Stud Source!");
+    speechSynthesis.speak(utterance);
+
+    $('a').mouseenter(function() {
+        speechSynthesis.cancel();
+        speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+    })
+    $('input').mouseenter(function() {
+        speechSynthesis.cancel();
+        speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+    })
+    // audio assistance
+
     if(document.documentElement.scrollTop==0)
     {
         hamburger.style.filter = "invert(0%) sepia(100%) \
