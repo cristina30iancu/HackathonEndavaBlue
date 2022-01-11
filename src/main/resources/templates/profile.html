@@ -15,17 +15,30 @@
   <script src="/scripts/navbar.js"></script>
   <link rel="stylesheet" href="../style/home.css">
   <title>Profile</title>
-
   <link rel="stylesheet" href="/style/notes.css">
   <link rel="stylesheet" href="../style/btn-flip.css">
   <link rel="stylesheet" href="style\profile.css" type="text/css" >
+  <script src="/scripts/preferences.js"></script>
 </head>
 <body id="mybody">
 
 
 <div class="page-container row">
-  <nav class="navbar navbar-light bg-light justify-content-between sticky-top col-xs-12" id="navbar">
+
+  <nav class="navbar navbar-light bg-light justify-content-between sticky-top" id="navbar">
     <div class="nav-left">
+      <div id="mySidenavLeft" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNavLeft()">&times;</a>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="switchAutism">
+          <label class="form-check-label" for="switchAutism">Black & White</label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="switchAudio">
+          <label class="form-check-label" for="switchAudio">Audio asssistance</label>
+        </div>
+      </div>
+      <img src="/media/nav_prod.svg" id="openNavLeft" style="cursor:pointer;" onclick="openNavLeft()">
       <a id="home-text" class="nav-item" href="/home">Home</a>
       <a id="professors-text" class="nav-item" href="/professors">Professors</a>
       <a id="courses-text" class="nav-item" href="/courses">Courses</a>
@@ -49,18 +62,14 @@
           <input hidden type="submit" value="Sign Out"/>
         </form>
         <a id="profile-text" href="/profile">Profile</a>
-        <a href="#" >Preferences</a>
-      </div>
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="switchAutism">
-        <label class="form-check-label" for="switchAutism">Special colors</label>
+
       </div>
       <img src="/media/nav_prod.svg" id="hamburger" onclick="openNav()">
     </div>
   </nav>
 
 
-<div class="container">
+  <div class="container">
 
       <img  class = "profile" th:if = "${img != null}" th:attr="src=${img},title=${img}" height="150" width="150">
       <img class = "profile" th:if = "${img == null}" th:attr="src=${#authentication.getPrincipal().getProfileImage()},title=${#authentication.getPrincipal().getProfileImage()}" height="150" width="150">
@@ -94,7 +103,13 @@
   function openNav() {
     document.getElementById("mySidenav").style.width = "200px";
   }
+  function openNavLeft() {
+    document.getElementById("mySidenavLeft").style.width = "200px";
+  }
 
+  function closeNavLeft() {
+    document.getElementById("mySidenavLeft").style.width = "0";
+  }
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
   }
@@ -168,6 +183,13 @@ saturate(0%) hue-rotate(338deg) brightness(200%) contrast(200%)";
 
     }
   });
+  document.getElementById("file-upload").addEventListener("change", function (e) {
+      let reader = new FileReader();
+      reader.addEventListener('load', function (event) {
+       document.querySelector('.profile').src = event.target.result;
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    });
 </script>
 
 </body>

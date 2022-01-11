@@ -1,3 +1,10 @@
+:root {
+    --main-color:#4E6686;
+    --secondary-color: #FCE3AF;
+    --shadow-var: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    --my-red-color: #E36D6D;
+    --green-message: #BBE5B0;
+}
 body {
     background: linear-gradient(-45deg, #d1f1fc,  #ef8daa,#8ec99e);
     background-size: 400% 400%;

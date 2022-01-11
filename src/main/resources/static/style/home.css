@@ -5,10 +5,12 @@
   --my-red-color: #E36D6D;
   --green-message: #BBE5B0;
   --darker-red: #3d0101;
+  --var-filter:none;
 }
 
 * {
   margin-right: 0px;
+  -webkit-filter: var(--var-filter);
 }
 
 * a {
@@ -18,6 +20,44 @@
 body {
   margin: 0;
 }
+#mySidenavLeft{
+  box-shadow: var(--shadow-var);
+  background-color:rgb(247, 247, 247);
+  position: absolute;
+  text-align: left;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  z-index: 1;
+  height: 100vh; width: 0;
+  top: 0%; left: 0%;
+  transition: 0.5s;
+  padding-top: 60px;
+
+
+}
+.closebtn{
+  position: absolute;
+  top: -.3em; left: -15px;
+  margin-left: 0px;
+  font-size: 50px;
+}
+.form-check{
+  margin-bottom: 1em;
+  margin-left: .3em;
+}
+#switchAutism{
+  cursor: pointer;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(73deg) brightness(150%) contrast(100%);
+  height: 1.4em;
+  margin-top: 0px;
+}
+#switchAudio{
+  cursor: pointer;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(73deg) brightness(150%) contrast(100%);
+  height: 1.4em;
+  margin-top: 0px;
+}
+
 
 .navbar {
   height: 4em;
@@ -111,11 +151,11 @@ body {
   -webkit-box-shadow: var(--shadow-var);
   box-shadow: var(--shadow-var);
   background-color: #f7f7f7;
-  position: fixed;
+  position: absolute;
   text-align: left;
   overflow-x: hidden;
   z-index: 1;
-  height: 100%;
+  height: 100vh;
   width: 0;
   top: 0%;
   right: 0%;

@@ -16,12 +16,25 @@
     <link rel="stylesheet" href="/style/notes.css">
     <link rel="stylesheet" href="/style/btn-flip.css">
     <script src="/scripts/navbar.js"></script>
+    <script src="/scripts/preferences.js"></script>
     <title>Notes</title>
 </head>
 <body id="mybody">
 
 <nav class="navbar navbar-light bg-light justify-content-between sticky-top" id="navbar">
     <div class="nav-left">
+        <div id="mySidenavLeft" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNavLeft()">&times;</a>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="switchAutism">
+                <label class="form-check-label" for="switchAutism">Black & White</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="switchAudio">
+                <label class="form-check-label" for="switchAudio">Audio asssistance</label>
+            </div>
+        </div>
+        <img src="/media/nav_prod.svg" id="openNavLeft" style="cursor:pointer;" onclick="openNavLeft()">
         <a id="home-text" class="nav-item" href="/home">Home</a>
         <a id="professors-text" class="nav-item" href="/professors">Professors</a>
         <a id="courses-text" class="nav-item" href="/courses">Courses</a>
@@ -45,14 +58,9 @@
                 <input hidden type="submit" value="Sign Out"/>
             </form>
             <a id="profile-text" href="/profile">Profile</a>
-            <a href="#" >Preferences</a>
 
         </div>
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="switchAutism">
-            <label class="form-check-label" for="switchAutism">Special colors</label>
-        </div>
-        <img src="/media/nav_prod.svg" id="hamburger" onclick="openNav()" style="filter: invert(0%) sepia(0%) saturate(7500%) hue-rotate(73deg) brightness(106%) contrast(109%);">
+        <img src="/media/nav_prod.svg" id="hamburger" onclick="openNav()">
     </div>
 </nav>
 
@@ -108,6 +116,13 @@
 
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
+    }
+    function openNavLeft() {
+        document.getElementById("mySidenavLeft").style.width = "200px";
+    }
+
+    function closeNavLeft() {
+        document.getElementById("mySidenavLeft").style.width = "0";
     }
 </script>
 <!--<script type="text/javascript" src="https://unpkg.com/imagekit-javascript/dist/imagekit.min.js"></script>-->

@@ -1,4 +1,51 @@
-$(document).ready(function(){
+window.addEventListener('load',()=>{
+    let switchAudio =  document.getElementById("switchAudio");
+   let switchStatusA = false;
+    switchAudio.checked = switchStatusA;
+    if(switchAudio.checked==true) {
+        let utterance = new SpeechSynthesisUtterance("Welcome to Stud Source!");
+        speechSynthesis.speak(utterance);
+
+        $('a').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+        })
+        $('input').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+        })
+    }
+
+    switchAudio.addEventListener('change',()=>{
+        if(switchAudio.checked==true) {
+            let utterance = new SpeechSynthesisUtterance("Welcome to Stud Source!");
+            speechSynthesis.speak(utterance);
+
+            $('a').mouseenter(function () {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+            })
+            $('input').mouseenter(function () {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+            })
+        }
+    });
+
+    let switchAut = document.getElementById("switchAutism");
+    let switchStatus = false;
+     switchAut.checked = switchStatus;
+
+    if(switchAut.checked==true) document.documentElement.style.setProperty('filter', 'grayscale(100%)');
+    else document.documentElement.style.setProperty('filter', 'grayscale(0%)');
+
+    switchAut.addEventListener('change',()=>{
+        if(switchAut.checked==true) document.documentElement.style.setProperty('filter', 'grayscale(100%)');
+        else document.documentElement.style.setProperty('filter', 'grayscale(0%)');
+      });
+});
+
+window.onload = function(){
 
     $('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
         $(this).toggleClass('open');
@@ -8,20 +55,6 @@ $(document).ready(function(){
     var navitems = document.getElementsByClassName("nav-item");
     var hamburger = document.getElementById("hamburger");
     var logo = document.getElementById("logo");
-
-    // audio assistance
-    let utterance = new SpeechSynthesisUtterance("Welcome to Stud Source!");
-    speechSynthesis.speak(utterance);
-
-    $('a').mouseenter(function() {
-        speechSynthesis.cancel();
-        speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
-    })
-    $('input').mouseenter(function() {
-        speechSynthesis.cancel();
-        speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
-    })
-    // audio assistance
 
     if(document.documentElement.scrollTop==0)
     {
@@ -81,4 +114,4 @@ $(document).ready(function(){
         this.lastScroll = scrollY ;
 
     }
-});
+};

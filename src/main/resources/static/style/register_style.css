@@ -1,7 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+:root {
+	--main-color:#4E6686;
+	--secondary-color: #FCE3AF;
+	--shadow-var: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	--my-red-color: #E36D6D;
+	--green-message: #BBE5B0;
+}
 
 body {
-	background: linear-gradient(-45deg, #BBE5B0, #E36D6D, #FCE3AF);
+	background: linear-gradient(-45deg, var(--green-message), var(--my-red-color), var(--secondary-color));
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height: 100vh;

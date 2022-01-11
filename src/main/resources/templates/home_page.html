@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="/style/home.css">
     <script src="/scripts/navbar.js"></script>
     <link rel="stylesheet" href="/style/btn-flip.css">
-
     <title>Home</title>
 </head>
 
@@ -24,6 +23,18 @@
 
 <nav class="navbar navbar-light bg-light justify-content-between sticky-top" id="navbar">
     <div class="nav-left">
+        <div id="mySidenavLeft" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNavLeft()">&times;</a>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="switchAutism">
+                <label class="form-check-label" for="switchAutism">Black & White</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="switchAudio">
+                <label class="form-check-label" for="switchAudio">Audio asssistance</label>
+            </div>
+        </div>
+        <img src="/media/nav_prod.svg" id="openNavLeft" style="cursor:pointer;" onclick="openNavLeft()">
         <a id="home-text" class="nav-item" href="/home">Home</a>
         <a id="professors-text" class="nav-item" href="/professors">Professors</a>
         <a id="courses-text" class="nav-item" href="/courses">Courses</a>
@@ -47,12 +58,7 @@
                 <input hidden type="submit" value="Sign Out"/>
             </form>
             <a id="profile-text" href="/profile">Profile</a>
-            <a href="#" >Preferences</a>
 
-        </div>
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="switchAutism">
-            <label class="form-check-label" for="switchAutism">Special colors</label>
         </div>
         <img src="/media/nav_prod.svg" id="hamburger" onclick="openNav()">
     </div>
@@ -133,9 +139,7 @@
                 <a><div class="btn-calendar">Previous</div></a>
                 <a><div class="btn-calendar">Next</div></a>
             </div>
-
         </div>
-
     </div>
     <div id="separator-one"></div>
 
@@ -225,12 +229,9 @@
 
 
     </div>
-
     <div id="separator-two"></div>
-
     <div class="bottom-section row">
         <div class="left-bottom col-xs-12 col-md-7">
-
         </div>
         <div class="right-bottom col-xs-12 col-md-5">
 
@@ -245,6 +246,32 @@
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
+    function openNavLeft() {
+        document.getElementById("mySidenavLeft").style.width = "200px";
+    }
+
+    function closeNavLeft() {
+        document.getElementById("mySidenavLeft").style.width = "0";
+    }
+    // window.addEventListener('load',()=>{
+    //
+    //     let switchAut = document.getElementById("switchAutism");
+    //     let saved = localStorage.getItem('filter');
+    //     let switchStatus = false;
+    //     if(saved)  switchStatus = saved;
+    //     switchAut.checked = switchStatus;
+    //
+    //     if(switchAut.checked==true) document.documentElement.style.setProperty('--var-filter', 'grayscale(100%)');
+    //     else document.documentElement.style.setProperty('--var-filter', 'none');
+    //     localStorage.setItem('filter',switchStatus);
+    //
+    //     switchAut.addEventListener('change',()=>{
+    //         if(switchAut.checked==true) document.documentElement.style.setProperty('--var-filter', 'grayscale(100%)');
+    //         else document.documentElement.style.setProperty('--var-filter', 'none');
+    //         localStorage.setItem('filter',switchStatus);
+    //     });
+    // });
+
 </script>
 </body>
 

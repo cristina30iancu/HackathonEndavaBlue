@@ -15,14 +15,28 @@
     <link rel="stylesheet" href="../style/home.css">
     <link rel="stylesheet" href="../style/courses.css">
     <link rel="stylesheet" href="../style/btn-flip.css">
+    <script src="/scripts/preferences.js"></script>
     <title>Courses</title>
 </head>
 <body id="mybody">
 
 
 <div class="page-container row">
-    <nav class="navbar navbar-light bg-light justify-content-between sticky-top col-xs-12" id="navbar">
+
+    <nav class="navbar navbar-light bg-light justify-content-between sticky-top" id="navbar">
         <div class="nav-left">
+            <div id="mySidenavLeft" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNavLeft()">&times;</a>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="switchAutism">
+                    <label class="form-check-label" for="switchAutism">Black & White</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="switchAudio">
+                    <label class="form-check-label" for="switchAudio">Audio asssistance</label>
+                </div>
+            </div>
+            <img src="/media/nav_prod.svg" id="openNavLeft" style="cursor:pointer;" onclick="openNavLeft()">
             <a id="home-text" class="nav-item" href="/home">Home</a>
             <a id="professors-text" class="nav-item" href="/professors">Professors</a>
             <a id="courses-text" class="nav-item" href="/courses">Courses</a>
@@ -46,15 +60,12 @@
                     <input hidden type="submit" value="Sign Out"/>
                 </form>
                 <a id="profile-text" href="/profile">Profile</a>
-                <a href="#" >Preferences</a>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="switchAutism">
-                <label class="form-check-label" for="switchAutism">Special colors</label>
+
             </div>
             <img src="/media/nav_prod.svg" id="hamburger" onclick="openNav()">
         </div>
     </nav>
+
 
     <div class="page-content">
         <div class="professors-display row col-xs-12">
@@ -95,6 +106,13 @@
 </div>
 
 <script>
+    function openNavLeft() {
+        document.getElementById("mySidenavLeft").style.width = "200px";
+    }
+
+    function closeNavLeft() {
+        document.getElementById("mySidenavLeft").style.width = "0";
+    }
     function openNav() {
         document.getElementById("mySidenav").style.width = "200px";
     }
