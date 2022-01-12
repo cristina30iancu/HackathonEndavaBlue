@@ -1,24 +1,18 @@
 package com.example.hackathonendava.service;
 
 import com.example.hackathonendava.exception.NotFoundException;
-import com.example.hackathonendava.model.Question;
-import com.example.hackathonendava.model.QuestionForm;
-import com.example.hackathonendava.model.Quiz;
-import com.example.hackathonendava.model.Result;
-import com.example.hackathonendava.repository.QuestionRepo;
-import com.example.hackathonendava.repository.QuizRepository;
-import com.example.hackathonendava.repository.ResultRepo;
-import com.example.hackathonendava.repository.TaskRepository;
+import com.example.hackathonendava.model.*;
+import com.example.hackathonendava.registration.User;
+import com.example.hackathonendava.registration.UserInfo;
+import com.example.hackathonendava.registration.UserRepository;
+import com.example.hackathonendava.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 
 @Service
@@ -31,14 +25,18 @@ public class QuizService {
     @Autowired
     QuestionRepo qRepo;
     @Autowired
+    QuestionMathRepo qMathRepo;
+    @Autowired
     Result result;
     @Autowired
     ResultRepo rRepo;
+    @Autowired
+    UserRepository userRepo;
+
 
     public QuestionForm getQuestions() {
         List<Question> allQues = qRepo.findAll();
         List<Question> qList = new ArrayList<Question>();
-
         Random random = new Random();
 
         for(int i=0; i<5; i++) {
@@ -52,6 +50,28 @@ public class QuizService {
         return qForm;
     }
 
+    public QuestionForm getQuestionsMath(){
+        List<QuestionMath> allQues = qMathRepo.findAll();
+        List<QuestionMath> qList = new ArrayList<QuestionMath>();
+        Random random = new Random();
+
+        for(int i=0; i<5; i++) {
+            int rand = random.nextInt(allQues.size());
+            qList.add(allQues.get(rand));
+            allQues.remove(rand);
+        }
+
+        qForm.setQuestionsMath(qList);
+
+        return qForm;
+    }
+
+    public String getUsername(){
+        List<User> users = (List<User>) userRepo.findAll();
+        String username = users.get(0).getFirstName() + users.get(0).getLastName();
+        return username;
+    }
+
     public int getResult(QuestionForm qForm) {
         int correct = 0;
 
@@ -61,6 +81,17 @@ public class QuizService {
 
         return correct;
     }
+
+    public int getResultMath(QuestionForm qForm) {
+        int correct = 0;
+
+        for(QuestionMath q: qForm.getQuestionsMath())
+            if(q.getAns() == q.getChose())
+                correct++;
+
+        return correct;
+    }
+
 
     public void saveScore(Result result) {
         Result saveResult = new Result();

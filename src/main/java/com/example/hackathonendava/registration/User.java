@@ -31,6 +31,12 @@ public class User {
     @Column(name = "profile_image")
     private String profile_image = "/media/defaultProfile.jpg";
 
+    @Column(name = "math_points")
+    private int mathPoints=0;
+
+    @Column(name = "cs_points")
+    private int csPoints=0;
+
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
