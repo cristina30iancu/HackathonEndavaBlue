@@ -42,6 +42,15 @@ public class UserInfo implements UserDetails {
 
     public String getProfileImage() { return user.getProfile_image(); }
 
+    public void setMathScore(int score) { user.setMathPoints(score); }
+
+    public int getMathScore() { return user.getMathPoints(); }
+
+    public void setCSScore(int score) { user.setCsPoints(score); }
+
+    public int getCSScore() { return user.getCsPoints(); }
+
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -63,5 +72,7 @@ public class UserInfo implements UserDetails {
     }
 
     public User getUser() { return this.user; }
+
+
 
 }

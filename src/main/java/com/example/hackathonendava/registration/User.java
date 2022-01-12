@@ -36,7 +36,7 @@ public class User {
 
     @Column(name = "cs_points")
     private int csPoints=0;
-
+    
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -111,5 +111,20 @@ public class User {
         this.profile_image = profile_image;
     }
 
+    public int getMathPoints() {
+        return mathPoints;
+    }
+
+    public void setMathPoints(int mathPoints) {
+        this.mathPoints = mathPoints;
+    }
+
+    public int getCsPoints() {
+        return csPoints;
+    }
+
+    public void setCsPoints(int csPoints) {
+        this.csPoints = csPoints;
+    }
 
 }

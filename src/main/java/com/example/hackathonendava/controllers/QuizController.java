@@ -2,8 +2,10 @@ package com.example.hackathonendava.controllers;
 
 import com.example.hackathonendava.model.QuestionForm;
 import com.example.hackathonendava.model.Result;
+import com.example.hackathonendava.registration.UserInfo;
 import com.example.hackathonendava.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -72,6 +74,7 @@ public class QuizController {
 
     @PostMapping("/submit_math")
     //@RequestMapping(value = "/submit", method = RequestMethod.POST)
+
     public String submitMath(@ModelAttribute("qForm") QuestionForm qForm, Model m) {
         if(!submitted) {
             result.setTotalCorrect(qService.getResultMath(qForm));
@@ -79,6 +82,19 @@ public class QuizController {
             submitted = true;
         }
 
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = "";
+        int oldScore = 0;
+        if (principal instanceof UserInfo) {
+            username = ((UserInfo)principal).getUsername();
+            oldScore = ((UserInfo)principal).getMathScore();
+
+        } else {
+            username = principal.toString();
+        }
+
+
+        qService.updateUserMathScore(oldScore + result.getTotalCorrect(),username);
         m.addAttribute("result", result);
 
         return "result.html";

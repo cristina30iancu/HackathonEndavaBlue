@@ -50,6 +50,18 @@ public class QuizService {
         return qForm;
     }
 
+    public void updateUserMathScore(int score, String email) {
+        User user = userRepo.getUserByEmail(email);
+        user.setMathPoints(score);
+        userRepo.save(user);
+    }
+
+    public void updateUserCSSScore(int score, String email) {
+        User user = userRepo.getUserByEmail(email);
+        user.setCsPoints(score);
+        userRepo.save(user);
+    }
+
     public QuestionForm getQuestionsMath(){
         List<QuestionMath> allQues = qMathRepo.findAll();
         List<QuestionMath> qList = new ArrayList<QuestionMath>();
