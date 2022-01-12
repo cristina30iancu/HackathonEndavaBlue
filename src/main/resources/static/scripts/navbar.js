@@ -1,21 +1,21 @@
 window.addEventListener('load',()=>{
+
+   // let switchStatusA = false;
+   //  switchAudio.checked = switchStatusA;
+   //  if(switchAudio.checked==true) {
+   //      let utterance = new SpeechSynthesisUtterance("Welcome to Stud Source!");
+   //      speechSynthesis.speak(utterance);
+   //
+   //      $('a').mouseenter(function() {
+   //          speechSynthesis.cancel();
+   //          speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+   //      })
+   //      $('input').mouseenter(function() {
+   //          speechSynthesis.cancel();
+   //          speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+   //      })
+   //  }
     let switchAudio =  document.getElementById("switchAudio");
-   let switchStatusA = false;
-    switchAudio.checked = switchStatusA;
-    if(switchAudio.checked==true) {
-        let utterance = new SpeechSynthesisUtterance("Welcome to Stud Source!");
-        speechSynthesis.speak(utterance);
-
-        $('a').mouseenter(function() {
-            speechSynthesis.cancel();
-            speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
-        })
-        $('input').mouseenter(function() {
-            speechSynthesis.cancel();
-            speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
-        })
-    }
-
     switchAudio.addEventListener('change',()=>{
         if(switchAudio.checked==true) {
             let utterance = new SpeechSynthesisUtterance("Welcome to Stud Source!");
@@ -28,6 +28,16 @@ window.addEventListener('load',()=>{
             $('input').mouseenter(function () {
                 speechSynthesis.cancel();
                 speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+            })
+        }
+        else{
+            $('a').mouseenter(function () {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+            })
+            $('input').mouseenter(function () {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance(""));
             })
         }
     });
