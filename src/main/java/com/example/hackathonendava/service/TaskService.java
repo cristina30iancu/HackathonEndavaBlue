@@ -15,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +47,43 @@ public class TaskService {
 
         }
         return taskRepository.getAllTasksByUserName(username);
+    }
+    public List<Task> getAllTasksSortedByDeadline(){
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = "";
+        if (principal instanceof UserInfo) {
+            username = ((UserInfo)principal).getUsername();
+
+        } else {
+            username = principal.toString();
+
+        }
+        List<Task> taskListSortedByDeadline =  taskRepository.getAllTasksByUserName(username);
+        taskListSortedByDeadline.sort(Comparator.comparing(Task::getDeadline));
+
+//        for(Task task : taskListSortedByName) {
+//            System.out.println(task.toString());
+//        }
+        return taskListSortedByDeadline;
+
+    }
+    public Task getTaskCalendar(){
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = "";
+        if (principal instanceof UserInfo) {
+            username = ((UserInfo)principal).getUsername();
+
+        } else {
+            username = principal.toString();
+
+        }
+        List<Task> taskListSortedByDeadline =  taskRepository.getAllTasksByUserName(username);
+        taskListSortedByDeadline.sort(Comparator.comparing(Task::getDeadline));
+        System.out.println(taskListSortedByDeadline.get(0).toString());
+        return taskListSortedByDeadline.get(0);
+
     }
 
     public Task getTask(Long id) {
