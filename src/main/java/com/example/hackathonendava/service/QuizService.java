@@ -37,7 +37,7 @@ public class QuizService {
 
 
     public QuestionForm getQuestions() {
-        List<Question> allQues = qRepo.findAll();
+        List<Question> allQues = qRepo.findAllByType("info");
         List<Question> qList = new ArrayList<Question>();
         Random random = new Random();
 
@@ -64,9 +64,9 @@ public class QuizService {
         userRepo.save(user);
     }
 
-    public QuestionMathForm getQuestionsMath(){
-        List<QuestionMath> allQues = qMathRepo.findAll();
-        List<QuestionMath> qList = new ArrayList<QuestionMath>();
+    public QuestionForm getQuestionsMath(){
+        List<Question> allQues = qRepo.findAllByType("math");
+        List<Question> qList = new ArrayList<Question>();
         Random random = new Random();
 
         for(int i=0; i<5; i++) {
@@ -75,9 +75,9 @@ public class QuizService {
             allQues.remove(rand);
         }
 
-        qMathForm.setQuestionsMath(qList);
+        qForm.setQuestions(qList);
 
-        return qMathForm;
+        return qForm;
     }
 
     public String getUsername(){
@@ -96,10 +96,10 @@ public class QuizService {
         return correct;
     }
 
-    public int getResultMath(QuestionMathForm qMathForm) {
+    public int getResultMath(QuestionForm qForm) {
         int correct = 0;
-
-        for(QuestionMath q: qMathForm.getQuestionsMath())
+        System.out.println(qForm.getQuestions());
+        for(Question q: qForm.getQuestions())
             if(q.getAns() == q.getChose())
                 correct++;
 

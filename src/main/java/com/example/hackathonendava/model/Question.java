@@ -31,11 +31,14 @@ public class Question {
     @Column(name = "chose")
     private int chose;
 
+    @Column(name = "type")
+    private String type;
+
     public Question() {
         super();
     }
 
-    public Question(int quesId, String title, String optionA, String optionB, String optionC, int ans, int chose) {
+    public Question(int quesId, String title, String optionA, String optionB, String optionC, int ans, int chose, String type) {
         super();
         this.quesId = quesId;
         this.title = title;
@@ -44,6 +47,7 @@ public class Question {
         this.optionC = optionC;
         this.ans = ans;
         this.chose = chose;
+        this.type = type;
     }
 
     public int getQuesId() {
@@ -100,6 +104,14 @@ public class Question {
 
     public void setChose(int choosed) {
         this.chose = choosed;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

@@ -40,8 +40,8 @@ public class QuizController {
         String username = qService.getUsername();
         result.setUsername(username);
 
-        QuestionMathForm qMathForm = qService.getQuestionsMath();
-        m.addAttribute("qMathForm", qMathForm);
+        QuestionForm qForm = qService.getQuestionsMath();
+        m.addAttribute("qForm", qForm);
 
         return "quiz_math.html";
     }
@@ -60,7 +60,6 @@ public class QuizController {
     }
 
     @PostMapping("/submit")
-    //@RequestMapping(value = "/submit", method = RequestMethod.POST)
     public String submit(@ModelAttribute("qForm") QuestionForm qForm, Model m) {
         if(!submitted) {
             result.setTotalCorrect(qService.getResult(qForm));
@@ -68,15 +67,26 @@ public class QuizController {
             submitted = true;
         }
 
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = "";
+        int oldScore = 0;
+        if (principal instanceof UserInfo) {
+            username = ((UserInfo)principal).getUsername();
+            oldScore = ((UserInfo)principal).getCSScore();
+
+        } else {
+            username = principal.toString();
+        }
+
+        qService.updateUserCSSScore(oldScore + result.getTotalCorrect(),username);
+
         m.addAttribute("result", result);
 
         return "result.html";
     }
 
     @PostMapping("/submit_math")
-    //@RequestMapping(value = "/submit", method = RequestMethod.POST)
-
-    public String submitMath(@ModelAttribute("qMathForm") QuestionMathForm qForm, Model m) {
+    public String submitMath(@ModelAttribute("qMathForm") QuestionForm qForm, Model m) {
         if(!submitted) {
             result.setTotalCorrect(qService.getResultMath(qForm));
             qService.saveScore(result);
@@ -93,7 +103,6 @@ public class QuizController {
         } else {
             username = principal.toString();
         }
-
 
         qService.updateUserMathScore(oldScore + result.getTotalCorrect(),username);
         m.addAttribute("result", result);
