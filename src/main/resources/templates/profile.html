@@ -81,19 +81,22 @@
         Upload new profile picture
       </label>
       <input id="file-upload" name="image" accept = "image/*" type="file"/>
-      <input type = "submit" value = "Save"/>
+      <input id = "save-button" type = "submit" value = "Save"/>
     </div>
   </form>
 
   </br>
   <h2 th:text ="${#authentication.getPrincipal().getFirstName()} + ' ' + ${#authentication.getPrincipal().getLastName()}"></h2>
-  <div >
+  <div>
   <h3 th:text = "${#authentication.getPrincipal().getUsername()}"></h3>
   </div>
 </br>
+    </br></br>
 
-  <h4>Your average score based on Math Quizez is: </h4>
-  <h4>Your average score based on Computer Science Quizez is:</h4>
+  <h4>Your average grade based on Math Quizez is: </h4>
+    <h3 th:text ="${#authentication.getPrincipal().getMathScore()}"></h3>
+  <h4>Your average grade based on Computer Science Quizez is:</h4>
+      <h3 th:text ="${#authentication.getPrincipal().getCSScore()}"></h3>
   </ul>
 </div>
 </div>
@@ -190,6 +193,9 @@ saturate(0%) hue-rotate(338deg) brightness(200%) contrast(200%)";
       });
       reader.readAsDataURL(e.target.files[0]);
     });
+  document.getElementById("save-button").addEventListener("change", function(f) {
+
+  });
 </script>
 
 </body>

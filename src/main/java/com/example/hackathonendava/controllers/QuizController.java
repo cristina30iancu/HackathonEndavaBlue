@@ -78,7 +78,12 @@ public class QuizController {
             username = principal.toString();
         }
 
-        qService.updateUserCSSScore(oldScore + result.getTotalCorrect(),username);
+        if(oldScore != 0) {
+            qService.updateUserCSSScore(((oldScore + result.getTotalCorrect())/2), username);
+        }
+        else {
+            qService.updateUserCSSScore(result.getTotalCorrect(), username);
+        }
 
         m.addAttribute("result", result);
 
@@ -104,7 +109,12 @@ public class QuizController {
             username = principal.toString();
         }
 
-        qService.updateUserMathScore(oldScore + result.getTotalCorrect(),username);
+        if(oldScore != 0) {
+            qService.updateUserMathScore(((oldScore + result.getTotalCorrect())/2), username);
+        }
+        else {
+            qService.updateUserMathScore(result.getTotalCorrect(), username);
+        }
         m.addAttribute("result", result);
 
         return "result.html";

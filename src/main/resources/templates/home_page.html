@@ -131,14 +131,11 @@
             <div class="card text-dark bg-light mb-3">
                 <div class="card-header year">Last Task Added</div>
                 <div class="card-body">
-                    <h5 th:text = "${T(com.example.hackathonendava.service.TaskService).getNameTaskCalendar()}" class="card-title deadline-date">14 Dec</h5>
+                    <h4 th:text = "${T(com.example.hackathonendava.service.TaskService).getNameTaskCalendar()}" class="card-title deadline-date">14 Dec</h4>
                     <div th:text = "${T(com.example.hackathonendava.service.TaskService).getDescriptionTaskCalendar()}" class="deadline-message"></div>
                 </div>
             </div>
-            <div class="calendar-buttons">
-                <a><div class="btn-calendar">Previous</div></a>
-                <a><div class="btn-calendar">Next</div></a>
-            </div>
+
         </div>
     </div>
     <div id="separator-one"></div>
