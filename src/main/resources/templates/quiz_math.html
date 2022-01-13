@@ -53,8 +53,8 @@
 <div class="container py-5 px-4">
     <h1 class="bg-danger text-light">Only Select The Correct Answers</h1>
 
-    <form action="#" th:action="@{/submit_math}" method="POST" th:object="${qForm}">
-        <div class="ques-box bg-dark text-light" th:each="ques, i: ${qForm.questions_math}">
+    <form action="#" th:action="@{/submit_math}" method="POST" th:object="${qMathForm}">
+        <div class="ques-box bg-dark text-light" th:each="ques, i: ${qMathForm.questions_math}">
             <p class="title" th:text="${ques.title}"></p>
 
             <div class="option">

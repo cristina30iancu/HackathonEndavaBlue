@@ -32,6 +32,8 @@ public class QuizService {
     ResultRepo rRepo;
     @Autowired
     UserRepository userRepo;
+    @Autowired
+    QuestionMathForm qMathForm;
 
 
     public QuestionForm getQuestions() {
@@ -62,7 +64,7 @@ public class QuizService {
         userRepo.save(user);
     }
 
-    public QuestionForm getQuestionsMath(){
+    public QuestionMathForm getQuestionsMath(){
         List<QuestionMath> allQues = qMathRepo.findAll();
         List<QuestionMath> qList = new ArrayList<QuestionMath>();
         Random random = new Random();
@@ -73,9 +75,9 @@ public class QuizService {
             allQues.remove(rand);
         }
 
-        qForm.setQuestionsMath(qList);
+        qMathForm.setQuestionsMath(qList);
 
-        return qForm;
+        return qMathForm;
     }
 
     public String getUsername(){
@@ -94,10 +96,10 @@ public class QuizService {
         return correct;
     }
 
-    public int getResultMath(QuestionForm qForm) {
+    public int getResultMath(QuestionMathForm qMathForm) {
         int correct = 0;
 
-        for(QuestionMath q: qForm.getQuestionsMath())
+        for(QuestionMath q: qMathForm.getQuestionsMath())
             if(q.getAns() == q.getChose())
                 correct++;
 

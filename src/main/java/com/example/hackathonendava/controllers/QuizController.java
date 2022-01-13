@@ -1,6 +1,7 @@
 package com.example.hackathonendava.controllers;
 
 import com.example.hackathonendava.model.QuestionForm;
+import com.example.hackathonendava.model.QuestionMathForm;
 import com.example.hackathonendava.model.Result;
 import com.example.hackathonendava.registration.UserInfo;
 import com.example.hackathonendava.service.QuizService;
@@ -39,8 +40,8 @@ public class QuizController {
         String username = qService.getUsername();
         result.setUsername(username);
 
-        QuestionForm qForm = qService.getQuestionsMath();
-        m.addAttribute("qForm", qForm);
+        QuestionMathForm qMathForm = qService.getQuestionsMath();
+        m.addAttribute("qMathForm", qMathForm);
 
         return "quiz_math.html";
     }
@@ -75,7 +76,7 @@ public class QuizController {
     @PostMapping("/submit_math")
     //@RequestMapping(value = "/submit", method = RequestMethod.POST)
 
-    public String submitMath(@ModelAttribute("qForm") QuestionForm qForm, Model m) {
+    public String submitMath(@ModelAttribute("qMathForm") QuestionMathForm qForm, Model m) {
         if(!submitted) {
             result.setTotalCorrect(qService.getResultMath(qForm));
             qService.saveScore(result);
