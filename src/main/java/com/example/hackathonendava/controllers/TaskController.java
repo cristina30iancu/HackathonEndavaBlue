@@ -25,7 +25,7 @@ public class TaskController {
     public ModelAndView showAllTasks() {
         ModelAndView mav = new ModelAndView("tasks");
         //mav.addObject("tasks", taskService.getAllTasksByUserName());
-        mav.addObject("tasks", taskService.getAllTasksSortedByDeadline());
+        mav.addObject("tasks", taskService.getAllTasksByUserName());
         return mav;
     }
 
@@ -40,6 +40,8 @@ public class TaskController {
     @PostMapping("/saveTask")
     public String saveTask(@ModelAttribute Task task) {
         taskService.saveTask(task);
+        taskService.setNameTask(task.getName());
+        taskService.setDescriptionTask(task.getDescription());
         return "redirect:/tasks";
     }
 

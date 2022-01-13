@@ -101,7 +101,7 @@
 
     <div class="deadlines row">
         <div class="title-deadlines col-xs-12" >
-            <h1 id="deadlines-title">D E A D L I N E S</h1>
+            <h1 id="deadlines-title">T A S K S</h1>
             <div class="title-underline"></div>
         </div>
 
@@ -109,30 +109,30 @@
             <img src="/media/project_img_endava.jpg" class="img-deadlines" style="width: 400px;">
             <div class="step" id="step1">
                 <h1>1</h1>
-                <h2>Go to Calendar <br>
-                    <span>Select Calendar from the navigation bar</span></h2>
+                <h2>Go to Tasks <br>
+                    <span>Select Tasks from the navigation bar</span></h2>
             </div>
             <div class="step" id="step2">
                 <h1>2</h1>
-                <h2>Click on ‘Add an activity’ <br>
+                <h2>Click on ‘New’ <br>
                     <span>Complete the activity attributes, such
-                        as: end-date, difficulty, <br> estimated time.</span></h2>
+                        as: name, description <br> deadline date.</span></h2>
             </div>
             <div class="step" id="step3">
                 <h1>3</h1>
-                <h2>Press ‘Add’ <br>
-                    <span>Now your activity will be displayed on the
-                        main page, as well <br> as in the deadlines
+                <h2>Press ‘Save’ <br>
+                    <span>Now your task will be displayed on the
+                        main page, as well <br> as in the tasks
                         section.</span></h2>
             </div>
         </div>
 
         <div class="calendar-side col-xs-12 col-sm-12 col-md-4">
             <div class="card text-dark bg-light mb-3">
-                <div class="card-header year">2021</div>
+                <div class="card-header year">Last Task Added</div>
                 <div class="card-body">
-                    <h5 class="card-title deadline-date">14 Dec</h5>
-                    <div class="deadline-message">Finalize the two exercises in the economics course</div>
+                    <h5 th:text = "${T(com.example.hackathonendava.service.TaskService).getNameTaskCalendar()}" class="card-title deadline-date">14 Dec</h5>
+                    <div th:text = "${T(com.example.hackathonendava.service.TaskService).getDescriptionTaskCalendar()}" class="deadline-message"></div>
                 </div>
             </div>
             <div class="calendar-buttons">

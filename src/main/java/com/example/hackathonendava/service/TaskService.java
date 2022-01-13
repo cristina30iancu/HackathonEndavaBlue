@@ -23,6 +23,9 @@ import java.util.Optional;
 public class TaskService {
 
     private final TaskRepository taskRepository;
+    private static String nameTask = "Not Enough Data";
+    private static String descriptionTask =  "";
+
     private Logger logger = LoggerFactory.getLogger(TaskService.class);
     @Autowired
     public TaskService(TaskRepository taskRepository) {
@@ -35,7 +38,16 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
+    public static void setNameTask(String nameTask) {
+        TaskService.nameTask = nameTask;
+    }
+
+    public static void setDescriptionTask(String descriptionTask) {
+        TaskService.descriptionTask = descriptionTask;
+    }
+
     public List<Task> getAllTasksByUserName(){
+
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = "";
@@ -68,7 +80,7 @@ public class TaskService {
         return taskListSortedByDeadline;
 
     }
-    public Task getTaskCalendar(){
+    public void getTaskCalendar(){
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = "";
@@ -80,10 +92,18 @@ public class TaskService {
 
         }
         List<Task> taskListSortedByDeadline =  taskRepository.getAllTasksByUserName(username);
-        taskListSortedByDeadline.sort(Comparator.comparing(Task::getDeadline));
+        //taskListSortedByDeadline.sort(Comparator.comparing(Task::getDeadline));
         System.out.println(taskListSortedByDeadline.get(0).toString());
-        return taskListSortedByDeadline.get(0);
 
+    }
+
+    public static String getNameTaskCalendar() {
+        return nameTask;
+    }
+
+
+    public static String getDescriptionTaskCalendar() {
+        return descriptionTask;
     }
 
     public Task getTask(Long id) {
