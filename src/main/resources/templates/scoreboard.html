@@ -9,6 +9,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Scoreboard Page</title>
+    <link rel="stylesheet" href="/style/home.css">
+    <link rel="stylesheet" href="/style/scores.css">
+
 </head>
 <body>
 
@@ -16,15 +19,16 @@
 <!-- Main Container Start -->
 <div class="main-container container py-5 px-4">
     <h3 class="bg-danger text-center mb-5 p-2">Top Scores Of All Time</h3>
+    <a href="/home"><img src="/media/logo-2.svg" id="logo"></a>
 
-    <table class="bg-dark text-light">
+    <table class="my-table">
         <tr>
             <th>Name</th>
             <th>Score</th>
         </tr>
         <tr th:each="score : ${sList}">
-            <td th:text="${score.username}"></td>
-            <td th:text="${score.totalCorrect}"></td>
+            <td id="username-cell" th:text="${score.username}"></td>
+            <td id="score-cell" th:text="${score.totalCorrect}"></td>
         </tr>
     </table>
 </div>

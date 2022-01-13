@@ -27,6 +27,7 @@ body {
 .navbar .nav-center #logo {
     -webkit-filter: invert(100%) sepia(0%) saturate(616%) hue-rotate(62deg) brightness(93%) contrast(91%) !important;
     filter: invert(100%) sepia(0%) saturate(616%) hue-rotate(62deg) brightness(93%) contrast(91%) !important;
+
 }
 
 .navbar .nav-right #hamburger {

@@ -1,0 +1,129 @@
+:root{
+    --main-color:#4E6686;
+    --secondary-color: #FCE3AF;
+    --shadow-var: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    --my-red-color: #E36D6D;
+    --green-message: #BBE5B0;
+}
+
+.ques-box{
+    height: 10em;
+    margin-top: 2em;
+    padding: 2em 4em 1em 4em;
+    background-color: white !important;
+    border-radius: 10em;
+    box-shadow: var(--shadow-var) !important;
+    color: black !important;
+    font-size: 14px;
+}
+
+#logo{
+    margin-left: 1em;
+}
+#openNavLeft{
+    padding-top: 0px !important;
+    margin-top: 5px !important;
+    margin-right: .4em !important; ;
+}
+
+.ques-box .title{
+    font-size: 20px;
+}
+
+#general-title{
+    text-align: center;
+}
+
+.option input{
+    /*background-color: pink !important;*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.option .container-q .rad-design{
+    width: 22px;
+    height: 22px;
+    border-radius: 22px;
+    cursor: pointer;
+    background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%));
+    position: relative;
+    /**/
+    margin: 0px;
+    left: 40%;
+}
+
+.container-q input:checked+.rad-design::before {
+    transform: scale(0);
+}
+.container-q input:checked~p{
+    color: hsl(0, 0%, 40%);
+}
+
+.option .container-q{
+    text-align: center !important;
+    align-content: center !important;
+    align-items: center !important;
+}
+
+.container-q {
+    font-size: 16px;
+    text-align: center !important;
+}
+
+.rad-design{
+    margin: 0px;
+}
+
+.rad-design::before {
+    content: '';
+
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+
+    background: hsl(0, 0%, 90%);
+    transform: scale(1.1);
+    transition: .3s;
+}
+
+.rad-input:checked+.rad-design::before {
+    transform: scale(0);
+}
+
+.nav-center{
+    background-color: transparent !important;
+    font-weight: bold;
+}
+/*#quiz-title{*/
+/*    background-color: transparent !important;*/
+/*}*/
+
+input[type=submit]{
+    background-color: black;
+    border: 3px transparent solid;
+    color: white;
+    padding: 16px 22px;
+    border-radius: 40px;
+    text-decoration: none;
+    margin:0px;
+    cursor: pointer;
+    position: fixed;
+    left: 50%;
+    bottom: 5%;
+    transition: all .35s ease-in-out;
+    font-size: 14px;
+    font-weight: 500;
+}
+input[type=submit]:hover{
+    border: 3px black solid;
+    background-color: white;
+    color: black;
+}
+
+.variant-container{
+    display: flex;
+    justify-content: space-between;
+}

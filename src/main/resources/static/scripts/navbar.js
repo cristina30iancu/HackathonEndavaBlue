@@ -3,6 +3,8 @@ window.addEventListener('load',()=>{
 
     const switchAudio = document.getElementById("switchAudio");
     const switchColors = document.getElementById("switchAutism");
+    const submitQuizBtn = document.getElementById("btnSubmit");
+    const predictBtn = document.getElementById("file-upload2");
 
     if(window.localStorage.getItem('preferBW') == "on")
     {
@@ -62,6 +64,19 @@ window.addEventListener('load',()=>{
             speechSynthesis.cancel();
             speechSynthesis.speak(new SpeechSynthesisUtterance("Preferences menu"));
         })
+        $('.btn-outline-warning').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+        })
+        $('#add-new-course').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance("Add new course"));
+        })
+        $(submitQuizBtn).mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance("Submit responses"));
+        })
+
     }
     else if(window.localStorage.getItem('preferAU') == "off" ){
         console.log("off audio");
@@ -91,6 +106,19 @@ window.addEventListener('load',()=>{
             speechSynthesis.cancel();
             speechSynthesis.speak(new SpeechSynthesisUtterance(""));
         })
+        $('.btn-outline-warning').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+        })
+        $('#add-new-course').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+        })
+        $(submitQuizBtn).mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+        })
+
     }
     $('#switchAudio').click(function (){
         if(window.localStorage.getItem('preferAU') == "off")
@@ -123,6 +151,19 @@ window.addEventListener('load',()=>{
                 speechSynthesis.cancel();
                 speechSynthesis.speak(new SpeechSynthesisUtterance("Preferences menu"));
             })
+            $('.btn-outline-warning').mouseenter(function() {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+            })
+            $('#add-new-course').mouseenter(function() {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance("Add new course"));
+            })
+            $(submitQuizBtn).mouseenter(function() {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance("Submit responses"));
+            })
+
 
         }
         else{
@@ -148,6 +189,18 @@ window.addEventListener('load',()=>{
                 speechSynthesis.speak(new SpeechSynthesisUtterance(""));
             })
             $('#openNavLeft').mouseenter(function() {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+            })
+            $('.btn-outline-warning').mouseenter(function() {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+            })
+            $('#add-new-course').mouseenter(function() {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+            })
+            $(submitQuizBtn).mouseenter(function() {
                 speechSynthesis.cancel();
                 speechSynthesis.speak(new SpeechSynthesisUtterance(""));
             })
@@ -221,6 +274,7 @@ window.onload = function(){
         else{
             navbar.style.top = '-65px';
             document.body.style.setProperty("--top-border-dist","0px");
+            document.getElementById("quiz-title").setAttribute("background-color","transparent");
         }
 
         this.lastScroll = scrollY ;
