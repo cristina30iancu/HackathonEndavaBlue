@@ -12,20 +12,6 @@ $ (document).ready(function() {
 
   hover_alert.style.opacity = "1";
 
-  // audio assistance
-  let utterance = new SpeechSynthesisUtterance("Welcome to Stud Source!");
-  speechSynthesis.speak(utterance);
-
-  $('a').mouseenter(function() {
-    speechSynthesis.cancel();
-    speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
-  })
-  $('button').mouseenter(function() {
-    speechSynthesis.cancel();
-    speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
-  })
-  // audio assistance
-
   new ResizeObserver(() => { 
     console.log(popup_circle.offsetHeight);
     if(popup_circle.offsetHeight < 300)
@@ -43,15 +29,7 @@ $ (document).ready(function() {
   if (media_phone.matches)
     {
       popup_circle.addEventListener("mouseenter", () => {
-      //   if(popup_circle.offsetHeight < 537)
-      // {
-      //   console.log("dadasa");
-      //   circle_text.style.display = "block";
-      // }  
-      // else{
-      //   console.log("1-text");
-      //   circle_text.style.display = "block";
-      // }
+
         
         circle_text.style.opacity = "1";
         btn_new.style.display = "block";
@@ -73,15 +51,7 @@ $ (document).ready(function() {
     { 
      
       popup_circle.addEventListener("mouseenter", () => {
-      //   if(popup_circle.offsetHeight < 537)
-      // {
-      //   console.log("dadada");
-      //   circle_text.style.display = "block";
-      // }  
-      // else{
-      //   console.log("1-text");
-      //   circle_text.style.display = "block";
-      // }
+
         circle_text.style.opacity = "1";
         btn_new.style.display = "block";
         popup_circle.style.height = "80%";
@@ -115,15 +85,6 @@ $ (document).ready(function() {
     if (media_phone.matches)
     {
       popup_circle.addEventListener("mouseenter", () => {
-      //   if(popup_circle.offsetHeight < 537)
-      // {
-      //   console.log("1-buton");
-      //   circle_text.style.display = "block";
-      // }  
-      // else{
-      //   console.log("1-text");
-      //   circle_text.style.display = "block";
-      // }
         circle_text.style.opacity = "1";
         btn_new.style.display = "block";
         popup_circle.style.height = "80%";
@@ -144,15 +105,7 @@ $ (document).ready(function() {
     { 
       // new ResizeObserver(() => console.log("resizing")).observe(popup_circle);
       popup_circle.addEventListener("mouseenter", () => {
-      //   if(popup_circle.offsetHeight < 537)
-      // {
-      //   console.log("dadada");
-      //   circle_text.style.display = "block";
-      // }  
-      // else{
-      //   console.log("1-text");
-      //   circle_text.style.display = "block";
-      // }
+
         circle_text.style.opacity = "1";
         btn_new.style.display = "block";
         popup_circle.style.height = "80%";
@@ -172,14 +125,8 @@ $ (document).ready(function() {
   });
 
   });
-  
- 
-
-
-
 
 window.onscroll = function() {scrollFunction()};
-
 
 function scrollFunction() {
 

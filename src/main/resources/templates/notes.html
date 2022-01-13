@@ -14,9 +14,7 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/style/home.css">
     <link rel="stylesheet" href="/style/notes.css">
-    <link rel="stylesheet" href="/style/btn-flip.css">
     <script src="/scripts/navbar.js"></script>
-    <script src="/scripts/preferences.js"></script>
     <title>Notes</title>
 </head>
 <body id="mybody">
@@ -27,11 +25,11 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNavLeft()">&times;</a>
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="switchAutism">
-                <label class="form-check-label" for="switchAutism">Black & White</label>
+                <label class="form-check-label" for="switchAutism">Color assistance</label>
             </div>
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="switchAudio">
-                <label class="form-check-label" for="switchAudio">Audio asssistance</label>
+                <label class="form-check-label" for="switchAudio">Audio assistance</label>
             </div>
         </div>
         <img src="/media/nav_prod.svg" id="openNavLeft" style="cursor:pointer;" onclick="openNavLeft()">
@@ -39,7 +37,7 @@
         <a id="professors-text" class="nav-item" href="/professors">Professors</a>
         <a id="courses-text" class="nav-item" href="/courses">Courses</a>
         <a id="quizes-text" class="nav-item" href="/quizes">Quizes</a>
-        <a id="deadlines-text" class="nav-item" href="/tasks">Deadlines</a>
+        <a id="deadlines-text" class="nav-item" href="/tasks">Tasks</a>
         <a id="diginotes-text" class="nav-item" href="/notes">Digital Notes</a>
         <a sec:authorize="hasAnyAuthority('ADMIN')" id="management-text" class="nav-item" href="/management">Management</a>
     </div>
@@ -91,8 +89,8 @@
                     <div>
 
 
-                        <label for="file-upload1" class="custom-file-upload2">
-                            <center><a><input id="file-upload1" class = "button-predict" type = "submit" value = "Predict" /><p style="display: none"></p> </a></center>
+                        <label for="file-upload2" class="custom-file-upload2">
+                            <center><a><input id="file-upload2" class = "button-predict" type = "submit" value = "Predict" /><p style="display: none"></p> </a></center>
                         </label>
 
 <!--                        <input id="file-upload" name="image" accept = "image/*" type="file"/>-->

@@ -42,6 +42,7 @@ body {
   font-size: 50px;
 }
 .form-check{
+  margin-top: 1em;
   margin-bottom: 1em;
   margin-left: .3em;
 }
@@ -78,6 +79,12 @@ body {
   -ms-flex-line-pack: center;
   align-content: center;
   margin-left: 1em;
+}
+
+.nav-left #openNavLeft{
+  margin-top: .8em;
+  height: 1.6em;
+  width: 1.6em;
 }
 
 .navbar .nav-left .nav-item {

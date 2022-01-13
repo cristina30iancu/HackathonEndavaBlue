@@ -1,58 +1,160 @@
 window.addEventListener('load',()=>{
 
-   // let switchStatusA = false;
-   //  switchAudio.checked = switchStatusA;
-   //  if(switchAudio.checked==true) {
-   //      let utterance = new SpeechSynthesisUtterance("Welcome to Stud Source!");
-   //      speechSynthesis.speak(utterance);
-   //
-   //      $('a').mouseenter(function() {
-   //          speechSynthesis.cancel();
-   //          speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
-   //      })
-   //      $('input').mouseenter(function() {
-   //          speechSynthesis.cancel();
-   //          speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
-   //      })
-   //  }
-    let switchAudio =  document.getElementById("switchAudio");
-    switchAudio.addEventListener('change',()=>{
-        if(switchAudio.checked==true) {
-            let utterance = new SpeechSynthesisUtterance("Welcome to Stud Source!");
-            speechSynthesis.speak(utterance);
 
-            $('a').mouseenter(function () {
+    const switchAudio = document.getElementById("switchAudio");
+    const switchColors = document.getElementById("switchAutism");
+
+    if(window.localStorage.getItem('preferBW') == "on")
+    {
+        console.log("on culori");
+        switchColors.setAttribute("checked","true");
+        switchColors.checked = true;
+        document.documentElement.style.setProperty('filter', 'grayscale(100%)');
+    }
+    else if(window.localStorage.getItem('preferBW') == "off")
+    {
+        console.log("off culori");
+        switchColors.setAttribute("checked","false");
+        switchColors.checked = false;
+        document.documentElement.style.setProperty('filter', 'grayscale(0%)');
+    }
+
+    $("#switchAutism").click(function (){
+        if(window.localStorage.getItem('preferBW') == "off")
+        {
+            window.localStorage.setItem('preferBW',"on");
+            document.documentElement.style.setProperty('filter', 'grayscale(100%)');
+            console.log('bifat bw');
+        }
+        else {
+            window.localStorage.setItem('preferBW',"off");
+            document.documentElement.style.setProperty('filter', 'grayscale(0%)');
+            console.log('nu bifat bw');
+        }
+    });
+
+    if(window.localStorage.getItem('preferAU') == "on" )
+    {
+        console.log("on audio");
+        switchAudio.setAttribute("checked","true");
+        switchAudio.checked = true;
+        $('a').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+        })
+        $('input').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+        })
+        $('.closebtn').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance("Close"));
+        })
+        $('.form-check-label').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+        })
+        $('#hamburger').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance("User menu"));
+        })
+        $('#openNavLeft').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance("Preferences menu"));
+        })
+    }
+    else if(window.localStorage.getItem('preferAU') == "off" ){
+        console.log("off audio");
+        switchAudio.setAttribute("checked","false");
+        switchAudio.checked = false;
+        $('a').mouseenter(function () {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+        })
+        $('input').mouseenter(function () {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+        })
+        $('.closebtn').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+        })
+        $('.form-check-label').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+        })
+        $('#hamburger').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+        })
+        $('#openNavLeft').mouseenter(function() {
+            speechSynthesis.cancel();
+            speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+        })
+    }
+    $('#switchAudio').click(function (){
+        if(window.localStorage.getItem('preferAU') == "off")
+        {
+            window.localStorage.setItem('preferAU',"on");
+            let utterance = new SpeechSynthesisUtterance("Welcome to Stud Source!");
+                 speechSynthesis.speak(utterance);
+
+            $('a').mouseenter(function() {
                 speechSynthesis.cancel();
                 speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
             })
-            $('input').mouseenter(function () {
+            $('input').mouseenter(function() {
                 speechSynthesis.cancel();
                 speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
             })
+            $('.closebtn').mouseenter(function() {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance("Close"));
+            })
+            $('.form-check-label').mouseenter(function() {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance($(this).text()));
+            })
+            $('#hamburger').mouseenter(function() {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance("User menu"));
+            })
+            $('#openNavLeft').mouseenter(function() {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance("Preferences menu"));
+            })
+
         }
         else{
+            window.localStorage.setItem('preferAU',"off")
             $('a').mouseenter(function () {
                 speechSynthesis.cancel();
                 speechSynthesis.speak(new SpeechSynthesisUtterance(""));
             })
             $('input').mouseenter(function () {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+            })
+            $('.closebtn').mouseenter(function() {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+            })
+            $('.form-check-label').mouseenter(function() {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+            })
+            $('#hamburger').mouseenter(function() {
+                speechSynthesis.cancel();
+                speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+            })
+            $('#openNavLeft').mouseenter(function() {
                 speechSynthesis.cancel();
                 speechSynthesis.speak(new SpeechSynthesisUtterance(""));
             })
         }
     });
 
-    let switchAut = document.getElementById("switchAutism");
-    let switchStatus = false;
-     switchAut.checked = switchStatus;
 
-    if(switchAut.checked==true) document.documentElement.style.setProperty('filter', 'grayscale(100%)');
-    else document.documentElement.style.setProperty('filter', 'grayscale(0%)');
-
-    switchAut.addEventListener('change',()=>{
-        if(switchAut.checked==true) document.documentElement.style.setProperty('filter', 'grayscale(100%)');
-        else document.documentElement.style.setProperty('filter', 'grayscale(0%)');
-      });
 });
 
 window.onload = function(){

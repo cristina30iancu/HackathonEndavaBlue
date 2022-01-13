@@ -27,11 +27,11 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNavLeft()">&times;</a>
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="switchAutism">
-                <label class="form-check-label" for="switchAutism">Black & White</label>
+                <label class="form-check-label" for="switchAutism">Color assistance</label>
             </div>
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="switchAudio">
-                <label class="form-check-label" for="switchAudio">Audio asssistance</label>
+                <label class="form-check-label" for="switchAudio">Audio assistance</label>
             </div>
         </div>
         <img src="/media/nav_prod.svg" id="openNavLeft" style="cursor:pointer;" onclick="openNavLeft()">
@@ -39,7 +39,7 @@
         <a id="professors-text" class="nav-item" href="/professors">Professors</a>
         <a id="courses-text" class="nav-item" href="/courses">Courses</a>
         <a id="quizes-text" class="nav-item" href="/quizes">Quizes</a>
-        <a id="deadlines-text" class="nav-item" href="/tasks">Deadlines</a>
+        <a id="deadlines-text" class="nav-item" href="/tasks">Tasks</a>
         <a id="diginotes-text" class="nav-item" href="/notes">Digital Notes</a>
         <a sec:authorize="hasAnyAuthority('ADMIN')" id="management-text" class="nav-item" href="/management">Management</a>
     </div>
@@ -253,24 +253,7 @@
     function closeNavLeft() {
         document.getElementById("mySidenavLeft").style.width = "0";
     }
-    // window.addEventListener('load',()=>{
-    //
-    //     let switchAut = document.getElementById("switchAutism");
-    //     let saved = localStorage.getItem('filter');
-    //     let switchStatus = false;
-    //     if(saved)  switchStatus = saved;
-    //     switchAut.checked = switchStatus;
-    //
-    //     if(switchAut.checked==true) document.documentElement.style.setProperty('--var-filter', 'grayscale(100%)');
-    //     else document.documentElement.style.setProperty('--var-filter', 'none');
-    //     localStorage.setItem('filter',switchStatus);
-    //
-    //     switchAut.addEventListener('change',()=>{
-    //         if(switchAut.checked==true) document.documentElement.style.setProperty('--var-filter', 'grayscale(100%)');
-    //         else document.documentElement.style.setProperty('--var-filter', 'none');
-    //         localStorage.setItem('filter',switchStatus);
-    //     });
-    // });
+
 
 </script>
 </body>
