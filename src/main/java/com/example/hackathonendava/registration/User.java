@@ -36,6 +36,12 @@ public class User {
 
     @Column(name = "cs_points")
     private int csPoints=0;
+
+    @Column(name = "last_task_name")
+    private String lastTaskName;
+
+    @Column(name = "last_task_description")
+    private String lastTaskDescription;
     
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -44,7 +50,24 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
+
     private Set<Role> roles = new HashSet<>();
+
+    public String getLastTaskName() {
+        return lastTaskName;
+    }
+
+    public void setLastTaskName(String lastTaskName) {
+        this.lastTaskName = lastTaskName;
+    }
+
+    public String getLastTaskDescription() {
+        return lastTaskDescription;
+    }
+
+    public void setLastTaskDescription(String lastTaskDescription) {
+        this.lastTaskDescription = lastTaskDescription;
+    }
 
     public Long getId() {
         return id;

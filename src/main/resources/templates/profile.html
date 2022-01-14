@@ -71,8 +71,8 @@
 
   <div class="container">
 
-      <img  class = "profile" th:if = "${img != null}" th:attr="src=${img},title=${img}" height="150" width="150">
-      <img class = "profile" th:if = "${img == null}" th:attr="src=${#authentication.getPrincipal().getProfileImage()},title=${#authentication.getPrincipal().getProfileImage()}" height="150" width="150">
+<!--      <img  class = "profile" th:if = "${img != null}" th:attr="src=${img},title=${img}" height="150" width="150">-->
+      <img class = "profile" th:attr="src=${profile.getProfile_image()},title=${profile.getProfile_image()}" height="150" width="150">
 
 
   <form th:action="@{/uploadProfilePicture}" method = "post" enctype="multipart/form-data">
@@ -86,17 +86,18 @@
   </form>
 
   </br>
-  <h2 th:text ="${#authentication.getPrincipal().getFirstName()} + ' ' + ${#authentication.getPrincipal().getLastName()}"></h2>
+  <h2 th:text ="${profile.getFirstName()} + ' ' + ${profile.getLastName}"></h2>
   <div>
-  <h3 th:text = "${#authentication.getPrincipal().getUsername()}"></h3>
+  <h3 th:text = "${profile.getEmail()}"></h3>
   </div>
 </br>
     </br></br>
 
   <h4>Your average grade based on Math Quizez is: </h4>
-    <h3 th:text ="${#authentication.getPrincipal().getMathScore()}"></h3>
+
+    <h3 th:text ="${profile.getMathPoints()}"></h3>
   <h4>Your average grade based on Computer Science Quizez is:</h4>
-      <h3 th:text ="${#authentication.getPrincipal().getCSScore()}"></h3>
+      <h3 th:text ="${profile.getCsPoints()}"></h3>
   </ul>
 </div>
 </div>

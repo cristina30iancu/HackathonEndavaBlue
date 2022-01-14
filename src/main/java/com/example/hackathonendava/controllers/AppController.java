@@ -49,20 +49,48 @@ public class AppController {
 
     private Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     @GetMapping("")
-    public String viewHomePage(User user) {
-        return "home_page";
+    public ModelAndView viewHomePage(User user) {
+        ModelAndView mav = new ModelAndView("home_page");
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = "";
+        if (principal instanceof UserInfo) {
+            username = ((UserInfo)principal).getUsername();
+
+        } else {
+            username = principal.toString();
+
+        }
+
+        //mav.addObject("tasks", taskService.getAllTasksByUserName());
+        mav.addObject("currentUser", userRepo.getUserByEmail(username));
+        return mav;
     }
 
     @GetMapping("/home")
-    public String viewHome() {
-        return "home_page";
+
+    public ModelAndView viewHome() {
+            ModelAndView mav = new ModelAndView("home_page");
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            String username = "";
+            if (principal instanceof UserInfo) {
+                username = ((UserInfo)principal).getUsername();
+
+            } else {
+                username = principal.toString();
+
+            }
+
+            //mav.addObject("tasks", taskService.getAllTasksByUserName());
+            mav.addObject("currentUser", userRepo.getUserByEmail(username));
+            return mav;
     }
+
 
 
     @GetMapping("/notes")
     public ModelAndView viewNotes(Model model) {
         ImageToText imageOCR = new ImageToText();
-        imageOCR.setResult("bb");
+        imageOCR.setResult("");
         if(path != null) {
             String res = imageOCR.imageToText(path);
         }
@@ -75,7 +103,22 @@ public class AppController {
 
 
     @GetMapping("/profile")
-    public String viewProfile() { return "/profile"; }
+    public ModelAndView viewProfile() {
+        ModelAndView mav = new ModelAndView("profile");
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = "";
+        if (principal instanceof UserInfo) {
+            username = ((UserInfo)principal).getUsername();
+
+        } else {
+            username = principal.toString();
+
+        }
+
+        //mav.addObject("tasks", taskService.getAllTasksByUserName());
+        mav.addObject("profile", userRepo.getUserByEmail(username));
+        return mav;
+    }
 
     @RequestMapping( "/image" )
     public String image () {
@@ -134,7 +177,10 @@ public class AppController {
                 e .printStackTrace ();
             }
         }
+
         ModelAndView mav = new ModelAndView("profile");
+        mav.addObject("profile", userRepo.getUserByEmail(username));
+
         return mav;
     }
 

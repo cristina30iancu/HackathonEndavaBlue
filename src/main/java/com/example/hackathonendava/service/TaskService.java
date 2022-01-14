@@ -6,6 +6,7 @@ import com.example.hackathonendava.exception.NotFoundException;
 import com.example.hackathonendava.model.Task;
 import com.example.hackathonendava.registration.User;
 import com.example.hackathonendava.registration.UserInfo;
+import com.example.hackathonendava.registration.UserRepository;
 import com.example.hackathonendava.repository.TaskRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,9 @@ public class TaskService {
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
+
+    @Autowired
+    UserRepository userRepository;
 
     public List<Task> getAllTasks(){
 
@@ -130,6 +134,11 @@ public class TaskService {
             username = principal.toString();
 
         }
+
+        User user = userRepository.getUserByEmail(username);
+        user.setLastTaskName(task.getName());
+        user.setLastTaskDescription(task.getDescription());
+        userRepository.save(user);
 
         System.out.println(username);
         task.setUser_name(username);

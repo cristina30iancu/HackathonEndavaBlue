@@ -131,8 +131,9 @@
             <div class="card text-dark bg-light mb-3">
                 <div class="card-header year">Last Task Added</div>
                 <div class="card-body">
-                    <h4 th:text = "${T(com.example.hackathonendava.service.TaskService).getNameTaskCalendar()}" class="card-title deadline-date">14 Dec</h4>
-                    <div th:text = "${T(com.example.hackathonendava.service.TaskService).getDescriptionTaskCalendar()}" class="deadline-message"></div>
+                    <h4 th:if = "${currentUser != null}" th:text = "${currentUser.getLastTaskName()}" class="card-title deadline-date"></h4>
+                    <h2 th:if = "${currentUser == null}" class="card-title deadline-date">Not Enough Data</h2>
+                    <div th:if = "${currentUser != null}" th:text = "${currentUser.getLastTaskDescription()}" class="deadline-message"></div>
                 </div>
             </div>
 

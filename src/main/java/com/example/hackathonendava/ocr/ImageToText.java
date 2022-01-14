@@ -56,7 +56,6 @@ public class ImageToText {
         setResultText(api.GetUTF8Text());
         String string = getResultText().getString();
         result = string;
-        System.out.println(string);
     }
 
     public static void cleanMemory() {
