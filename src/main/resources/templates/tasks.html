@@ -14,29 +14,14 @@
             crossorigin="anonymous"></script>
     <script src="/scripts/carousel.js"></script>
     <script src="/scripts/navbar.js"></script>
-<!--    <link rel="stylesheet" href="/style/btn-flip.css">-->
+    <link rel="stylesheet" href="/style/btn-flip.css">
     <link rel="stylesheet" href="/style/tasks.css">
-    <link rel="stylesheet" href="/style/home.css">
     <title>Tasks</title>
 </head>
 <body id="mybody">
 
 <nav class="navbar navbar-light bg-light justify-content-between sticky-top" id="navbar">
     <div class="nav-left">
-
-        <div id="mySidenavLeft" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNavLeft()">&times;</a>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="switchAutism">
-                <label class="form-check-label" for="switchAutism">Color assistance</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="switchAudio">
-                <label class="form-check-label" for="switchAudio">Audio assistance</label>
-            </div>
-        </div>
-        <img src="/media/nav_prod.svg" id="openNavLeft" style="cursor:pointer;" onclick="openNavLeft()">
-
         <a id="home-text" class="nav-item" href="/home">Home</a>
         <a id="professors-text" class="nav-item" href="/professors">Professors</a>
         <a id="courses-text" class="nav-item" href="/courses">Courses</a>
@@ -63,6 +48,10 @@
             <a href="#" >Preferences</a>
 
         </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="switchAutism">
+            <label class="form-check-label" for="switchAutism">Special colors</label>
+        </div>
         <img src="/media/nav_prod.svg" id="hamburger" onclick="openNav()">
     </div>
 </nav>
@@ -72,6 +61,19 @@
     <div class="title"><h1>My tasks</h1></div>
     <div class="task-side col-sm-9 col-md-9">
 
+        <!--        <div class="user-input col-xs-12">-->
+        <!--            <input class="form-control shadow-none mr-sm-2" type="search" placeholder="Search for task in the list" aria-label="Search" id="search-task">-->
+        <!--            &lt;!&ndash;            <div id="sort-btn">Sort by</div>&ndash;&gt;-->
+        <!--            <div>    </div>-->
+        <!--            <div class="dropdown">-->
+        <!--                <button class="dropbtn">Sort by </button>-->
+        <!--                <div class="dropdown-content">-->
+        <!--                    <a href="/">Link 1</a>-->
+        <!--                    <a href="/" >Name</a>-->
+        <!--                    <a href="#">Link 3</a>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
 
         <div class="task-list col-xs-12">
 
@@ -124,13 +126,6 @@
 
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
-    }
-    function openNavLeft() {
-        document.getElementById("mySidenavLeft").style.width = "200px";
-    }
-
-    function closeNavLeft() {
-        document.getElementById("mySidenavLeft").style.width = "0";
     }
 </script>
 </body>
