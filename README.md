@@ -12,4 +12,29 @@ majoritatea tool-urilor necesare in buna desfasurare a procesului edcuativ.
 
 Prezentarea pe larg se află aici: https://prezi.com/p/3aaxtpgqt8pd/studsource/.
 
+Sign up:
+
+![sign](poze/sign.png)
+
+Log in:
+
+![log](poze/log.png)
+
+Deadlines:
+
+![deadlines](poze/deadlines.png)
+
+Deadlines b&w:
+
+![deadlinesbw](poze/deadlinesbw.png)
+
+Courses:
+
+![courses](poze/courses.png)
+
+Quizzes:
+
+![quizzes](poze/quiz.png)
+
+
 
